@@ -38,8 +38,6 @@ class FullAgent:
         self.time_infected = 0  # Time since infection
         self.grid_size = grid_size
         # now an inner variable to make sure that we keep track how old, in terms of infections, the virus is
-        self.viral_age = 0
-        self.immunity_level = 0
         self.vaxxed = vaxxed
         self.vax_effect = vax_effect
         self.viral_age = 0
