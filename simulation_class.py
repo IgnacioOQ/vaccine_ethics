@@ -214,4 +214,4 @@ class Simulation:
         avg_viral_age = np.mean([agent.viral_age for agent in self.agents]) # total viral age
         avg_immunity = np.mean([agent.immunity_level for agent in self.agents]) # total immunity of alive agents
 
-        return self.step, dead_count, max_infected, auc_infected, avg_viral_age, avg_immunity
+        return [self.step, dead_count, max_infected, auc_infected, avg_viral_age, avg_immunity]
