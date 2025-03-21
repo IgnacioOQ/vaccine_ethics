@@ -113,7 +113,7 @@ class Simulation:
             (x, y), state = agent.update(self.agents)
             self.grid[x, y] = state_mapping[state]  # Mark the agent's new position on the grid
 
-    def run(self, iterations,plot_grid=False):
+    def run(self, iterations=1000,plot_grid=False):
         """
         Runs the simulation for a specified number of iterations.
 
