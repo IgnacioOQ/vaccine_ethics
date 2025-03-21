@@ -209,11 +209,8 @@ class Simulation:
         max_infected = max(self.i_proportions)
         time_steps = range(len(self.i_proportions))
         auc_infected = np.trapz(self.i_proportions, x=time_steps)
-        tot_viral_age = 0
-        tot_immunity = 0
-        for agent in self.agents:
-            tot_viral_age += agent.viral_age
-            tot_immunity += agent.immunity_level
-        avg_viral_age = tot_viral_age / len(self.agents)
-        avg_immunity = tot_immunity / len(self.agents)
+
+        avg_viral_age = np.mean([agent.viral_age for agent in self.agents]) # total viral age
+        avg_immunity = np.mean([agent.immunity_level for agent in self.agents]) # total immunity of alive agents
+
         return np.array([dead_count,time_steps,auc_infected,avg_viral_age,avg_immunity])
