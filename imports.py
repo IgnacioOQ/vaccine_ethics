@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import time
 from IPython.display import clear_output
-import tqdm as tqdm
+from tqdm import tqdm
 import pandas as pd
 import seaborn as sns
 
