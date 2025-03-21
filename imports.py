@@ -6,6 +6,7 @@ import time
 from IPython.display import clear_output
 import tqdm as tqdm
 import pandas as pd
+import seaborn as sns
 
 # State mapping for grid visualization with colors
 state_mapping = {
