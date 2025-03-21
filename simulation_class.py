@@ -21,6 +21,7 @@ class Simulation:
         - grid_size: The size of the grid.
         - num_agents: The number of agents to place on the grid.
         """
+        self.num_agents = num_agents
         self.grid_size = grid_size
         self.grid = np.zeros((grid_size, grid_size))  # Initialize an empty grid
         self.agent_class = agent_class
