@@ -130,7 +130,7 @@ class Simulation:
 
             # check states of the agents
             states = [agent.state for agent in self.agents]
-            i_prop = states.count('I') / num_agents
+            i_prop = states.count('I') / self.num_agents
 
             if i_prop == 0:
                 print("Simulation stopped early: No infected agents remaining. Step: "+str(step))
