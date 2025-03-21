@@ -174,7 +174,6 @@ class Simulation:
         plt.title(f"Simulation Step: {step}")  # Set the plot title
         plt.show()
 
-
     def plot_hist(self):
       fig, axs = plt.subplots(1, 2, figsize=(16, 6))  # 1 row, 2 columns
 
@@ -204,3 +203,17 @@ class Simulation:
       axs[1].set_title('State Proportions Over Time')
 
       plt.show()
+
+    def generate_simulation_report(self):
+        dead_count = max(self.d_proportions)
+        max_infected = max(self.i_proportions)
+        time_steps = range(len(self.i_proportions))
+        auc_infected = np.trapz(self.i_proportions, x=time_steps)
+        tot_viral_age = 0
+        tot_immunity = 0
+        for agent in self.agents:
+            tot_viral_age += agent.viral_age
+            tot_immunity += agent.immunity_level
+        avg_viral_age = tot_viral_age / len(self.agents)
+        avg_immunity = tot_immunity / len(self.agents)
+        return np.array([dead_count,time_steps,auc_infected,avg_viral_age,avg_immunity])
