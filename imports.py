@@ -5,6 +5,7 @@ import matplotlib.colors as mcolors
 import time
 from IPython.display import clear_output
 import tqdm as tqdm
+import pandas as pd
 
 # State mapping for grid visualization with colors
 state_mapping = {
