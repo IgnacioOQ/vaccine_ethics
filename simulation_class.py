@@ -128,11 +128,20 @@ class Simulation:
               if plot_grid:
                 self.plot_grid()
               time.sleep(0.01)  # Pause to create an animation effect
-
+    
             # check states of the agents
             states = [agent.state for agent in self.agents]
-            i_prop = states.count('I') / self.num_agents
-
+            s_prop = states.count('S') / len(self.agents)
+            i_prop = states.count('I') / len(self.agents)
+            r_prop = states.count('R') / len(self.agents)
+            d_prop = states.count('D') / len(self.agents)
+        
+            # Store the proportions for plotting later
+            self.s_proportions.append(s_prop)
+            self.i_proportions.append(i_prop)
+            self.r_proportions.append(r_prop)
+            self.d_proportions.append(d_prop)
+            
             if i_prop == 0:
                 print("Simulation stopped early: No infected agents remaining. Step: "+str(step))
                 #clear_output(wait=True)
@@ -167,20 +176,6 @@ class Simulation:
 
 
     def plot_hist(self):
-
-      # check states of the agents
-      states = [agent.state for agent in self.agents]
-      s_prop = states.count('S') / len(self.agents)
-      i_prop = states.count('I') / len(self.agents)
-      r_prop = states.count('R') / len(self.agents)
-      d_prop = states.count('D') / len(self.agents)
-
-      # Store the proportions for plotting later
-      self.s_proportions.append(s_prop)
-      self.i_proportions.append(i_prop)
-      self.r_proportions.append(r_prop)
-      self.d_proportions.append(d_prop)
-
       fig, axs = plt.subplots(1, 2, figsize=(16, 6))  # 1 row, 2 columns
 
       # Bar plot for proportions
