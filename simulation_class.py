@@ -111,7 +111,7 @@ class Simulation:
             (x, y), state = agent.update(self.agents)
             self.grid[x, y] = state_mapping[state]  # Mark the agent's new position on the grid
 
-    def run(self, iterations,plot_grid=False,plot=self.plot):
+    def run(self, iterations,plot_grid=False):
         """
         Runs the simulation for a specified number of iterations.
 
@@ -120,7 +120,7 @@ class Simulation:
         """
         for step in range(iterations):
             self.update_agents()  # Update all agents
-            if plot:
+            if self.plot:
               clear_output(wait=False)  # True if you want it online, false if you want the end plot
               self.plot_hist()
               if plot_grid:
