@@ -5,7 +5,7 @@ class Simulation:
     """
     Manages the entire simulation, including the grid, agents, and the simulation loop.
     """
-    def __init__(self, grid_size=25, num_agents=600, agent_class = FullAgent, 
+    def __init__(self, grid_size=25, num_agents=600, agent_class = FullAgent, init_infected_proportion = 0.1,
                  proportion_vulnerable=0.1, vul_penalty = 0.5,
                  infection_prob=0.25, recovery_time=30, death_prob=0.05, 
                  vax_vulnerable=False,
@@ -24,6 +24,7 @@ class Simulation:
         self.grid_size = grid_size
         self.grid = np.zeros((grid_size, grid_size))  # Initialize an empty grid
         self.agent_class = agent_class
+        self.init_infected_proportion = init_infected_proportion
         self.proportion_vulnerable = proportion_vulnerable
         self.vul_penalty = vul_penalty
         self.infection_prob=infection_prob
@@ -55,7 +56,7 @@ class Simulation:
         for _ in range(num_agents):
             x = random.randint(0, self.grid_size - 1)
             y = random.randint(0, self.grid_size - 1)
-            state = 'I' if random.random() < init_proportion else 'S'  # Start with a few infected agents
+            state = 'I' if random.random() < self.init_infected_proportion else 'S'  # Start with a few infected agents
             if random.random() < self.proportion_vulnerable:
               vul_type = 'high'
               if self.vax_vulnerable or self.vax_all:
