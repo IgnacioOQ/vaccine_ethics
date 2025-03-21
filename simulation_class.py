@@ -178,6 +178,13 @@ class Simulation:
     def plot_hist(self):
       fig, axs = plt.subplots(1, 2, figsize=(16, 6))  # 1 row, 2 columns
 
+      # Example of s_prop, i_prop, r_prop, d_prop (current proportions) for bar plot
+      # Replace these with your current values
+      s_prop = self.s_proportions[-1]
+      i_prop = self.i_proportions[-1]
+      r_prop = self.r_proportions[-1]
+      d_prop = self.d_proportions[-1]
+        
       # Bar plot for proportions
       axs[0].bar(['S', 'I', 'R','D'], [s_prop, i_prop, r_prop,d_prop],color = ['green','red','blue','black'])
       axs[0].set_ylim(0, 1)
