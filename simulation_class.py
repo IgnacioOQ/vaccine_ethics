@@ -143,7 +143,8 @@ class Simulation:
             self.d_proportions.append(d_prop)
             
             if i_prop == 0:
-                print("Simulation stopped early: No infected agents remaining. Step: "+str(step))
+                self.step = step
+                # print("Simulation stopped early: No infected agents remaining. Step: "+str(step))
                 #clear_output(wait=True)
                 #self.plot_hist(step+1)
                 break
@@ -213,4 +214,4 @@ class Simulation:
         avg_viral_age = np.mean([agent.viral_age for agent in self.agents]) # total viral age
         avg_immunity = np.mean([agent.immunity_level for agent in self.agents]) # total immunity of alive agents
 
-        return dead_count, time_steps, auc_infected, avg_viral_age, avg_immunity
+        return self.step, dead_count, max_infected, auc_infected, avg_viral_age, avg_immunity
