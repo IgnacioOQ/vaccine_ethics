@@ -57,42 +57,29 @@ class Simulation:
         for _ in range(num_agents):
             x = random.randint(0, self.grid_size - 1)
             y = random.randint(0, self.grid_size - 1)
-            state = 'I' if random.random() < self.init_infected_proportion else 'S'  # Start with a few infected agents
-            if random.random() < self.proportion_vulnerable:
-              vul_type = 'high'
-              if self.vax_vulnerable or self.vax_all:
-                agent = self.agent_class(x, y, grid_size = self.grid_size, infection_prob=self.infection_prob,
-                          recovery_time = self.recovery_time,death_prob=self.death_prob,vul_type=vul_type,
-                          vul_penalty = self.vul_penalty, state=state, vaxxed=True, vax_effect = self.vax_effect,
-                          viral_age_effect = self.viral_age_effect,
-                          immune_adaptation_effect = self.immune_adaptation_effect)
-              else:
-                if self.vax_all:
-                  agent = self.agent_class(x, y, grid_size = self.grid_size, infection_prob=self.infection_prob,
-                            recovery_time = self.recovery_time,death_prob=self.death_prob,vul_type=vul_type,
-                            vul_penalty = self.vul_penalty, state=state, vaxxed=True, vax_effect = self.vax_effect,
-                            viral_age_effect = self.viral_age_effect,
-                            immune_adaptation_effect = self.immune_adaptation_effect)
-                else:
-                  agent = self.agent_class(x, y, grid_size = self.grid_size, infection_prob=self.infection_prob,
-                            recovery_time = self.recovery_time,death_prob=self.death_prob,vul_type=vul_type,
-                            vul_penalty = self.vul_penalty, state=state, vaxxed=True, vax_effect = self.vax_effect,
-                            viral_age_effect = self.viral_age_effect,
-                            immune_adaptation_effect = self.immune_adaptation_effect)
-            else:
-              vul_type = 'low'
-              if self.vax_all:
-                agent = self.agent_class(x, y, grid_size = self.grid_size, infection_prob=self.infection_prob,
-                          recovery_time = self.recovery_time,death_prob=self.death_prob,vul_type=vul_type,
-                          vul_penalty = self.vul_penalty, state=state, vaxxed=True, vax_effect = self.vax_effect,
-                          viral_age_effect = self.viral_age_effect,
-                          immune_adaptation_effect = self.immune_adaptation_effect)
-              else:
-                agent = self.agent_class(x, y, grid_size = self.grid_size, infection_prob=self.infection_prob,
-                          recovery_time = self.recovery_time,death_prob=self.death_prob,vul_type=vul_type,
-                          vul_penalty = self.vul_penalty, state=state, vaxxed=True, vax_effect = self.vax_effect,
-                          viral_age_effect = self.viral_age_effect,
-                          immune_adaptation_effect = self.immune_adaptation_effect)
+            state = 'I' if random.random() < self.init_infected_proportion else 'S'
+
+            # Determine vulnerability type
+            vul_type = 'high' if random.random() < self.proportion_vulnerable else 'low'
+
+            # Determine if the agent is vaccinated
+            vaxxed = self.vax_all or (vul_type == 'high' and self.vax_vulnerable)
+
+            # Create agent
+            agent = self.agent_class(
+                x, y,
+                grid_size=self.grid_size,
+                infection_prob=self.infection_prob,
+                recovery_time=self.recovery_time,
+                death_prob=self.death_prob,
+                vul_type=vul_type,
+                vul_penalty=self.vul_penalty,
+                state=state,
+                vaxxed=vaxxed,
+                vax_effect=self.vax_effect,
+                viral_age_effect=self.viral_age_effect,
+                immune_adaptation_effect=self.immune_adaptation_effect
+            )
 
             agents.append(agent)
             # Mark the initial position on the grid
