@@ -28,9 +28,9 @@ class FullAgent:
         self.state = state
         self.vul_type = vul_type
         if self.vul_type == 'high':
-            self.infection_prob = infection_prob + vul_penalty
-            self.recovery_time = recovery_time + 50*vul_penalty
-            self.death_prob = death_prob + vul_penalty/2
+            self.infection_prob = infection_prob*(1+vul_penalty)
+            self.recovery_time = recovery_time*(1+vul_penalty)
+            self.death_prob = death_prob*(1+vul_penalty)
         else:
           self.infection_prob = infection_prob
           self.recovery_time = recovery_time

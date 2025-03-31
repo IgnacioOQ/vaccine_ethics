@@ -108,14 +108,9 @@ class Simulation:
         - iterations: The number of simulation steps to run.
         """
         for step in range(iterations):
+            self.step = step
             self.update_agents()  # Update all agents
-            if self.plot:
-              clear_output(wait=False)  # True if you want it online, false if you want the end plot
-              self.plot_hist()
-              if plot_grid:
-                self.plot_grid()
-              time.sleep(0.01)  # Pause to create an animation effect
-    
+   
             # check states of the agents
             states = [agent.state for agent in self.agents]
             s_prop = states.count('S') / len(self.agents)
@@ -130,12 +125,13 @@ class Simulation:
             self.d_proportions.append(d_prop)
             
             if i_prop == 0:
-                self.step = step
-                # print("Simulation stopped early: No infected agents remaining. Step: "+str(step))
-                #clear_output(wait=True)
-                #self.plot_hist(step+1)
                 break
-        # self.plot_hist()
+        if self.plot:
+          clear_output(wait=False)  # True if you want it online, false if you want the end plot
+          self.plot_hist()
+          if plot_grid:
+            self.plot_grid()
+          time.sleep(0.01)  # Pause to create an animation effect
 
     def plot_grid(self, step):
         """
