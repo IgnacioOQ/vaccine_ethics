@@ -3,40 +3,61 @@ from agent_class import FullAgent
 
 class Simulation:
     """
-    Manages the entire simulation, including the grid, agents, and the simulation loop.
+    Manages the entire simulation, including the grid, agents, and simulation logic.
     """
-    def __init__(self, grid_size=25, num_agents=600, agent_class = FullAgent, init_infected_proportion = 0.1,
-                 proportion_vulnerable=0.1, vul_penalty = 0.5,
-                 infection_prob=0.25, recovery_time=30, death_prob=0.05, 
-                 vax_vulnerable=False,
-                 vax_all=False,
-                 vax_effect = 0.7,
-                 viral_age_effect = 0.1,
-                 immune_adaptation_effect = 0.1,
+
+    def __init__(self, grid_size=25, num_agents=600, agent_class=FullAgent, init_infected_proportion=0.1,
+                 proportion_vulnerable=0.1, vul_penalty=0.5,
+                 infection_prob=0.25, recovery_time=30, death_prob=0.05,
+                 vax_vulnerable=False, vax_all=False,
+                 vax_effect=0.7, viral_age_effect=0.1, immune_adaptation_effect=0.1,
                  plot=True):
         """
-        Initializes the simulation with a grid and agents.
+        Initializes the simulation grid and the agents.
 
         Parameters:
-        - grid_size: The size of the grid.
-        - num_agents: The number of agents to place on the grid.
+        - grid_size: Size of the grid (NxN).
+        - num_agents: Number of agents in the simulation.
+        - agent_class: Class used to instantiate agents (default: FullAgent).
+        - init_infected_proportion: Proportion of agents initially infected.
+        - proportion_vulnerable: Proportion of vulnerable agents (higher risk).
+        - vul_penalty: Penalty multiplier for vulnerable agents.
+        - infection_prob: Base probability of infection.
+        - recovery_time: Base recovery time for infected agents.
+        - death_prob: Base probability of death due to infection.
+        - vax_vulnerable: Whether to vaccinate vulnerable agents.
+        - vax_all: Whether to vaccinate all agents.
+        - vax_effect: Effectiveness of vaccination (reduction factor).
+        - viral_age_effect: Infectivity/death/recovery reduction per viral age.
+        - immune_adaptation_effect: Same reduction per immunity level.
+        - plot: Whether to plot results at the end.
         """
         self.num_agents = num_agents
         self.grid_size = grid_size
-        self.grid = np.zeros((grid_size, grid_size))  # Initialize an empty grid
+        self.grid = np.zeros((grid_size, grid_size))  # Empty grid
         self.agent_class = agent_class
+
+        # Disease and agent behavior parameters
         self.init_infected_proportion = init_infected_proportion
         self.proportion_vulnerable = proportion_vulnerable
         self.vul_penalty = vul_penalty
-        self.infection_prob=infection_prob
-        self.recovery_time=recovery_time
-        self.death_prob=death_prob
+        self.infection_prob = infection_prob
+        self.recovery_time = recovery_time
+        self.death_prob = death_prob
+
+        # Vaccination settings
         self.vax_vulnerable = vax_vulnerable
         self.vax_all = vax_all
         self.vax_effect = vax_effect
+
+        # Evolutionary factors
         self.viral_age_effect = viral_age_effect
         self.immune_adaptation_effect = immune_adaptation_effect
-        self.agents = self.initialize_agents(num_agents)  # Initialize agents
+
+        # Initialize agents
+        self.agents = self.initialize_agents(num_agents)
+
+        # State tracking and plotting
         self.plot = plot
         self.s_proportions = []
         self.i_proportions = []
@@ -45,27 +66,19 @@ class Simulation:
 
     def initialize_agents(self, num_agents):
         """
-        Randomly places agents on the grid with initial states.
-
-        Parameters:
-        - num_agents: The number of agents to place on the grid.
+        Places agents on the grid with appropriate initial states and attributes.
 
         Returns:
-        - A list of Agent objects.
+        - List of agent objects.
         """
         agents = []
         for _ in range(num_agents):
             x = random.randint(0, self.grid_size - 1)
             y = random.randint(0, self.grid_size - 1)
             state = 'I' if random.random() < self.init_infected_proportion else 'S'
-
-            # Determine vulnerability type
             vul_type = 'high' if random.random() < self.proportion_vulnerable else 'low'
-
-            # Determine if the agent is vaccinated
             vaxxed = self.vax_all or (vul_type == 'high' and self.vax_vulnerable)
 
-            # Create agent
             agent = self.agent_class(
                 x, y,
                 grid_size=self.grid_size,
@@ -82,119 +95,124 @@ class Simulation:
             )
 
             agents.append(agent)
-            # Mark the initial position on the grid
-            # this is just to color the grid, the actual process uses the position in the agent class
-            self.grid[x, y] = state_mapping[state]  # Mark the initial position on the grid
+            self.grid[x, y] = state_mapping[state]  # Populate visual grid
 
         return agents
 
     def update_agents(self):
         """
-        Updates the position and state of all agents and refreshes the grid.
+        Updates agent positions and states, and refreshes the grid.
         """
-        # Clear the grid before updating
-        self.grid = np.zeros((self.grid_size, self.grid_size))
+        self.grid = np.zeros((self.grid_size, self.grid_size))  # Clear grid
 
-        # Update each agent and place it on the new grid position
         for agent in self.agents:
             (x, y), state = agent.update(self.agents)
-            self.grid[x, y] = state_mapping[state]  # Mark the agent's new position on the grid
+            self.grid[x, y] = state_mapping[state]
 
-    def run(self, iterations=1000,plot_grid=False):
+    def run(self, iterations=1000, plot_grid=False):
         """
-        Runs the simulation for a specified number of iterations.
+        Runs the simulation for a given number of iterations.
 
         Parameters:
-        - iterations: The number of simulation steps to run.
+        - iterations: Number of time steps to simulate.
+        - plot_grid: Whether to show the final grid layout.
         """
         for step in range(iterations):
             self.step = step
-            self.update_agents()  # Update all agents
-   
-            # check states of the agents
+            self.update_agents()
+
+            # Count states
             states = [agent.state for agent in self.agents]
             s_prop = states.count('S') / len(self.agents)
             i_prop = states.count('I') / len(self.agents)
             r_prop = states.count('R') / len(self.agents)
             d_prop = states.count('D') / len(self.agents)
-        
-            # Store the proportions for plotting later
+
+            # Store proportions
             self.s_proportions.append(s_prop)
             self.i_proportions.append(i_prop)
             self.r_proportions.append(r_prop)
             self.d_proportions.append(d_prop)
-            
+
+            # Stop if no infected remain
             if i_prop == 0:
                 break
+
         if self.plot:
-          clear_output(wait=False)  # True if you want it online, false if you want the end plot
-          self.plot_hist()
-          if plot_grid:
-            self.plot_grid()
-          time.sleep(0.01)  # Pause to create an animation effect
+            clear_output(wait=False)
+            self.plot_hist()
+            if plot_grid:
+                self.plot_grid(step)
+            time.sleep(0.01)
 
     def plot_grid(self, step):
         """
-        Plots the current state of the grid, showing the position and state of each agent.
+        Visualizes the agent states on the grid at a specific simulation step.
 
         Parameters:
-        - step: The current simulation step, used for the plot title.
+        - step: Simulation step number.
         """
-        plt.figure(figsize=(10, 6))  # Set the plot size
-
-        # Prepare a grid for plotting with colors based on the agent state
+        plt.figure(figsize=(10, 6))
         colored_grid = np.zeros((self.grid_size, self.grid_size, 3))
+
         for i in range(self.grid_size):
             for j in range(self.grid_size):
                 if self.grid[i, j] != 0:
                     color = color_mapping[self.grid[i, j]]
                     colored_grid[i, j] = mcolors.to_rgb(color)
 
-        # Display the grid with colored agents
         plt.imshow(colored_grid, interpolation='none')
         plt.grid(True, which='both', color='black', linewidth=1)
         plt.xticks(np.arange(-0.5, self.grid_size, 1), [])
         plt.yticks(np.arange(-0.5, self.grid_size, 1), [])
-        plt.title(f"Simulation Step: {step}")  # Set the plot title
+        plt.title(f"Simulation Step: {step}")
         plt.show()
 
     def plot_hist(self):
-      fig, axs = plt.subplots(1, 2, figsize=(16, 6))  # 1 row, 2 columns
+        """
+        Plots the final state proportions and how states evolved over time.
+        """
+        fig, axs = plt.subplots(1, 2, figsize=(16, 6))
 
-      # Example of s_prop, i_prop, r_prop, d_prop (current proportions) for bar plot
-      # Replace these with your current values
-      s_prop = self.s_proportions[-1]
-      i_prop = self.i_proportions[-1]
-      r_prop = self.r_proportions[-1]
-      d_prop = self.d_proportions[-1]
-        
-      # Bar plot for proportions
-      axs[0].bar(['S', 'I', 'R','D'], [s_prop, i_prop, r_prop,d_prop],color = ['green','red','blue','black'])
-      axs[0].set_ylim(0, 1)
-      axs[0].set_ylabel('Proportion')
-      axs[0].set_title('Agent State Proportions')
+        # Final proportions (bar chart)
+        s_prop = self.s_proportions[-1]
+        i_prop = self.i_proportions[-1]
+        r_prop = self.r_proportions[-1]
+        d_prop = self.d_proportions[-1]
 
-      # Plot the populations over time
-      axs[1].plot(range(len(self.s_proportions)), self.s_proportions, label='S', color='green')
-      axs[1].plot(range(len(self.i_proportions)), self.i_proportions, label='I', color='red')
-      axs[1].plot(range(len(self.r_proportions)), self.r_proportions, label='R', color='blue')
-      axs[1].plot(range(len(self.d_proportions)), self.d_proportions, label='D', color='black')
-      axs[1].set_xlim(0, max(2, len(self.s_proportions) + 1))
-      axs[1].set_ylim(0, 1)
-      axs[1].set_xlabel('Time Steps')
-      axs[1].set_ylabel('Proportion')
-      axs[1].legend()
-      axs[1].set_title('State Proportions Over Time')
+        axs[0].bar(['S', 'I', 'R', 'D'], [s_prop, i_prop, r_prop, d_prop], color=['green', 'red', 'blue', 'black'])
+        axs[0].set_ylim(0, 1)
+        axs[0].set_ylabel('Proportion')
+        axs[0].set_title('Final Agent State Proportions')
 
-      plt.show()
+        # Time evolution (line chart)
+        axs[1].plot(range(len(self.s_proportions)), self.s_proportions, label='S', color='green')
+        axs[1].plot(range(len(self.i_proportions)), self.i_proportions, label='I', color='red')
+        axs[1].plot(range(len(self.r_proportions)), self.r_proportions, label='R', color='blue')
+        axs[1].plot(range(len(self.d_proportions)), self.d_proportions, label='D', color='black')
+        axs[1].set_xlim(0, max(2, len(self.s_proportions) + 1))
+        axs[1].set_ylim(0, 1)
+        axs[1].set_xlabel('Time Steps')
+        axs[1].set_ylabel('Proportion')
+        axs[1].legend()
+        axs[1].set_title('State Proportions Over Time')
+
+        plt.show()
 
     def generate_simulation_report(self):
+        """
+        Generates a summary report of the simulation results.
+
+        Returns:
+        - NumPy array containing:
+          [last_step, max_deaths, peak_infection, infection_auc, avg_viral_age, avg_immunity]
+        """
         dead_count = max(self.d_proportions)
         max_infected = max(self.i_proportions)
         time_steps = range(len(self.i_proportions))
-        auc_infected = np.trapz(self.i_proportions, x=time_steps)
+        auc_infected = np.trapz(self.i_proportions, x=time_steps)  # Area under curve
 
-        avg_viral_age = np.mean([agent.viral_age for agent in self.agents]) # total viral age
-        avg_immunity = np.mean([agent.immunity_level for agent in self.agents]) # total immunity of alive agents
+        avg_viral_age = np.mean([agent.viral_age for agent in self.agents])
+        avg_immunity = np.mean([agent.immunity_level for agent in self.agents])
 
         return np.array([self.step, dead_count, max_infected, auc_infected, avg_viral_age, avg_immunity])
