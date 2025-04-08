@@ -41,9 +41,9 @@ class FullAgent:
 
         # Apply vulnerability penalties if the agent is 'high risk'
         if self.vul_type == 'high':
-            self.infection_prob = infection_prob * (1 + vul_penalty)
-            self.recovery_time = recovery_time * (1 + vul_penalty)
-            self.death_prob = death_prob * (1 + vul_penalty)
+            self.infection_prob = min(infection_prob * (1 + vul_penalty),1)
+            self.recovery_time = min(recovery_time * (1 + vul_penalty),1)
+            self.death_prob = min(death_prob * (1 + vul_penalty),1)
         else:
             self.infection_prob = infection_prob
             self.recovery_time = recovery_time
