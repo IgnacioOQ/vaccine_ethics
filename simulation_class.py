@@ -137,7 +137,11 @@ class Simulation:
             # Stop if no infected remain
             if i_prop == 0:
                 break
-
+            
+            # Stop if there is no progress in proportions of deaths
+            if len(self.d_proportions) >= 50 and all(x == self.d_proportions[-1] for x in self.d_proportions[-50:]):
+                break
+            
         if self.plot:
             clear_output(wait=False)
             self.plot_hist()
