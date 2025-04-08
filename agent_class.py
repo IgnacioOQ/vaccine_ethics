@@ -109,7 +109,7 @@ class FullAgent:
                     # Further reduce infection probability based on viral age and immunity
                     infection_prob = max(
                         base_infection_prob *
-                        (1 - self.viral_age_effect * agent.viral_age - self.immune_adaptation_effect * self.immunity_level),
+                        (1 - self.immune_adaptation_effect * self.immunity_level), # - self.viral_age_effect * agent.viral_age
                         0
                     )
 
@@ -148,7 +148,7 @@ class FullAgent:
 
                 base_recovery_time = max(
                     base_recovery_time *
-                    (1 - self.viral_age_effect * self.viral_age - self.immune_adaptation_effect * self.immunity_level),
+                    (1 - self.immune_adaptation_effect * self.immunity_level), # - self.viral_age_effect * self.viral_age 
                     0
                 )
 
