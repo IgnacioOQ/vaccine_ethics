@@ -110,7 +110,7 @@ class FullAgent:
                     infection_prob = max(
                         base_infection_prob *
                         (1 - self.immune_adaptation_effect * self.immunity_level 
-                         + self.viral_age_effect * agent.viral_agent), # - self.viral_age_effect * agent.viral_age
+                         + self.viral_age_effect * agent.viral_age), # - self.viral_age_effect * agent.viral_age
                         0
                     )
 
