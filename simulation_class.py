@@ -219,4 +219,10 @@ class Simulation:
         avg_viral_age = np.mean([agent.viral_age for agent in self.agents])
         avg_immunity = np.mean([agent.immunity_level for agent in self.agents])
 
+        who_died = [agent for agent in self.agents if agent.state == 'D']
+        total_non_vulnerable = len([agent for agent in self.agents if agent.vul_type == 'low'])
+        non_vulnerable_dead = len([agent for agent in who_died if agent.vul_type == 'low'])
+        non_vulnerable_proportion = non_vulnerable_dead / total_non_vulnerable if total_non_vulnerable > 0 else 0
+        # we later want to compare between the vax all vs vax vulnerable
+
         return np.array([self.step, dead_count, max_infected, auc_infected, avg_viral_age, avg_immunity])
