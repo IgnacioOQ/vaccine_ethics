@@ -172,34 +172,74 @@ class Simulation:
         plt.title(f"Simulation Step: {step}")
         plt.show()
 
+    # def plot_hist(self):
+    #     """
+    #     Plots the final state proportions and how states evolved over time.
+    #     """
+    #     fig, axs = plt.subplots(1, 2, figsize=(16, 6))
+
+    #     # Final proportions (bar chart)
+    #     s_prop = self.s_proportions[-1]
+    #     i_prop = self.i_proportions[-1]
+    #     r_prop = self.r_proportions[-1]
+    #     d_prop = self.d_proportions[-1]
+
+    #     axs[0].bar(['S', 'I', 'D'], [s_prop, i_prop, d_prop], color=['green', 'red', 'black'])
+    #     axs[0].set_ylim(0, 1)
+    #     axs[0].set_ylabel('Proportion')
+    #     axs[0].set_title('Final Agent State Proportions')
+
+    #     # Time evolution (line chart)
+    #     axs[1].plot(range(len(self.s_proportions)), self.s_proportions, label='S', color='green')
+    #     axs[1].plot(range(len(self.i_proportions)), self.i_proportions, label='I', color='red')
+    #     # axs[1].plot(range(len(self.r_proportions)), self.r_proportions, label='R', color='blue')
+    #     axs[1].plot(range(len(self.d_proportions)), self.d_proportions, label='D', color='black')
+    #     axs[1].set_xlim(0, max(2, len(self.s_proportions) + 1))
+    #     axs[1].set_ylim(0, 1)
+    #     axs[1].set_xlabel('Time Steps')
+    #     axs[1].set_ylabel('Proportion')
+    #     axs[1].legend()
+    #     axs[1].set_title('State Proportions Over Time')
+
+    #     plt.show()
+
     def plot_hist(self):
         """
-        Plots the final state proportions and how states evolved over time.
+        Plots the final state proportions and how states evolved over time (smoothed).
         """
-        fig, axs = plt.subplots(1, 2, figsize=(16, 6))
+        def smooth(data, window_size=5):
+            pad = window_size // 2
+            padded = np.pad(data, (pad, pad), mode='edge')
+            return np.convolve(padded, np.ones(window_size)/window_size, mode='valid')
+
+        fig, axs = plt.subplots(1, 2, figsize=(12, 4))
 
         # Final proportions (bar chart)
         s_prop = self.s_proportions[-1]
         i_prop = self.i_proportions[-1]
-        r_prop = self.r_proportions[-1]
         d_prop = self.d_proportions[-1]
 
-        axs[0].bar(['S', 'I', 'R', 'D'], [s_prop, i_prop, r_prop, d_prop], color=['green', 'red', 'blue', 'black'])
+        axs[0].bar(['S', 'I', 'D'], [s_prop, i_prop, d_prop], color=['green', 'red', 'black'])
         axs[0].set_ylim(0, 1)
         axs[0].set_ylabel('Proportion')
         axs[0].set_title('Final Agent State Proportions')
 
+        # Smooth time series with padding
+        window_size = 5
+        s_series = smooth(self.s_proportions, window_size)
+        i_series = smooth(self.i_proportions, window_size)
+        d_series = smooth(self.d_proportions, window_size)
+
         # Time evolution (line chart)
-        axs[1].plot(range(len(self.s_proportions)), self.s_proportions, label='S', color='green')
-        axs[1].plot(range(len(self.i_proportions)), self.i_proportions, label='I', color='red')
-        axs[1].plot(range(len(self.r_proportions)), self.r_proportions, label='R', color='blue')
-        axs[1].plot(range(len(self.d_proportions)), self.d_proportions, label='D', color='black')
-        axs[1].set_xlim(0, max(2, len(self.s_proportions) + 1))
+        axs[1].plot(range(len(s_series)), s_series, label='S', color='green')
+        axs[1].plot(range(len(i_series)), i_series, label='I', color='red')
+        axs[1].plot(range(len(d_series)), d_series, label='D', color='black')
+        axs[1].set_xlim(0, max(2, len(s_series) + 1))
         axs[1].set_ylim(0, 1)
         axs[1].set_xlabel('Time Steps')
         axs[1].set_ylabel('Proportion')
         axs[1].legend()
-        axs[1].set_title('State Proportions Over Time')
+        axs[1].set_title('Smoothed State Proportions Over Time')
 
         plt.show()
 
