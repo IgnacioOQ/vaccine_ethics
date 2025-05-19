@@ -7,6 +7,7 @@ from IPython.display import clear_output
 from tqdm import tqdm
 import pandas as pd
 import seaborn as sns
+import math
 
 # State mapping for grid visualization with colors
 state_mapping = {
