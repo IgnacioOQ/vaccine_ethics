@@ -152,10 +152,21 @@ class FullAgent:
                 )
 
                 # Recover if infection time exceeds randomized threshold
+                # This is very much a rectilienar activation function
                 if self.time_infected >= random.randint(int(base_recovery_time // 2), int(base_recovery_time)):
                     self.immunity_level += 1  # Gain some immunity
                     self.state = 'S'  # Become susceptible again (not truly recovered)
+                # # Sigmoid recovery function below
+                # low   = base_recovery_time / 2          # first moment recovery has any chance
+                # high  = base_recovery_time              # by this point it is virtually certain
+                # mid   = (low + high) / 2                # 0.75 · base_recovery_time  → 50 % mark
+                # scale = (high - low) / 6                # steepness: covers ≈1 % → 99 % inside (low, high)
+                # # Smooth probability of recovering *this* tick
+                # p_recover = 1 / (1 + math.exp(-(self.time_infected - mid) / scale))
 
+                # if random.random() < p_recover:         # succeed with that probability
+                #     self.immunity_level += 1            # Gain some immunity
+                #     self.state = 'S'                    # Become susceptible again
         # Move the agent regardless of health state (except dead)
         self.move()
 
