@@ -11,7 +11,7 @@ class Simulation:
                  infection_prob=0.25, recovery_time=30, death_prob=0.05,
                  vax_vulnerable=False, vax_all=False,
                  vax_effect=0.7, viral_age_effect=0.1, immune_adaptation_effect=0.1,
-                 plot=True):
+                 plot=True, seed=True):
         """
         Initializes the simulation grid and the agents.
 
@@ -36,6 +36,19 @@ class Simulation:
         self.grid_size = grid_size
         self.grid = np.zeros((grid_size, grid_size))  # Empty grid
         self.agent_class = agent_class
+
+        if seed:  # seed is a boolean
+            ss = np.random.SeedSequence()
+            seed_int = int(ss.generate_state(1, dtype=np.uint32)[0])
+            self.seed = seed_int
+            random.seed(seed_int)       # for Python's random
+            np.random.seed(seed_int)    # for NumPy
+        else:
+            self.seed = None
+
+        # Per-simulation RNGs (avoid global cross-talk)
+        self.rng = random.Random(self.seed) if self.seed is not None else random.Random()
+        self.nprng = np.random.default_rng(self.seed)  # if you later need NumPy RNG
 
         # Disease and agent behavior parameters
         self.init_infected_proportion = init_infected_proportion
@@ -65,18 +78,12 @@ class Simulation:
         self.d_proportions = []
 
     def initialize_agents(self, num_agents):
-        """
-        Places agents on the grid with appropriate initial states and attributes.
-
-        Returns:
-        - List of agent objects.
-        """
         agents = []
         for _ in range(num_agents):
-            x = random.randint(0, self.grid_size - 1)
-            y = random.randint(0, self.grid_size - 1)
-            state = 'I' if random.random() < self.init_infected_proportion else 'S'
-            vul_type = 'high' if random.random() < self.proportion_vulnerable else 'low'
+            x = self.rng.randint(0, self.grid_size - 1)
+            y = self.rng.randint(0, self.grid_size - 1)
+            state = 'I' if self.rng.random() < self.init_infected_proportion else 'S'
+            vul_type = 'high' if self.rng.random() < self.proportion_vulnerable else 'low'
             vaxxed = self.vax_all or (vul_type == 'high' and self.vax_vulnerable)
 
             agent = self.agent_class(
@@ -91,14 +98,14 @@ class Simulation:
                 vaxxed=vaxxed,
                 vax_effect=self.vax_effect,
                 viral_age_effect=self.viral_age_effect,
-                immune_adaptation_effect=self.immune_adaptation_effect
+                immune_adaptation_effect=self.immune_adaptation_effect,
+                rng=self.rng  # <<< pass per-sim RNG
             )
 
             agents.append(agent)
-            self.grid[x, y] = state_mapping[state]  # Populate visual grid
-
+            self.grid[x, y] = state_mapping[state]
         return agents
-
+    
     def update_agents(self):
         """
         Updates agent positions and states, and refreshes the grid.
@@ -268,4 +275,4 @@ class Simulation:
         vulnerable_dead = len([agent for agent in who_died if agent.vul_type == 'high'])
         vulnerable_proportion_dead = vulnerable_dead / total_vulnerable if total_vulnerable > 0 else 0
         return np.array([self.step, dead_count, max_infected, auc_infected, avg_viral_age, avg_immunity,
-                         non_vulnerable_proportion_dead,vulnerable_proportion_dead])
+                         non_vulnerable_proportion_dead,vulnerable_proportion_dead,self.seed])
