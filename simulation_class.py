@@ -264,5 +264,8 @@ class Simulation:
         non_vulnerable_dead = len([agent for agent in who_died if agent.vul_type == 'low'])
         non_vulnerable_proportion_dead = non_vulnerable_dead / total_non_vulnerable if total_non_vulnerable > 0 else 0
         # we later want to compare between the vax all vs vax vulnerable
-
-        return np.array([self.step, dead_count, max_infected, auc_infected, avg_viral_age, avg_immunity,non_vulnerable_proportion_dead])
+        total_vulnerable = len([agent for agent in self.agents if agent.vul_type == 'high'])
+        vulnerable_dead = len([agent for agent in who_died if agent.vul_type == 'high'])
+        vulnerable_proportion_dead = vulnerable_dead / total_vulnerable if total_vulnerable > 0 else 0
+        return np.array([self.step, dead_count, max_infected, auc_infected, avg_viral_age, avg_immunity,
+                         non_vulnerable_proportion_dead,vulnerable_proportion_dead])
