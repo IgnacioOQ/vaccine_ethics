@@ -22,5 +22,5 @@ color_mapping = {
     1: 'green',  # Susceptible agents will be shown in green
     2: 'red',    # Infected agents will be shown in red
     3: 'blue',   # Recovered agents will be shown in blue
-    4: 'yellow'   # Dead agents will be shown in black
+    4: 'black'   # Dead agents will be shown in black
 }

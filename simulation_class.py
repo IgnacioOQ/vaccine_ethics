@@ -76,6 +76,7 @@ class Simulation:
         self.i_proportions = []
         self.r_proportions = []
         self.d_proportions = []
+        self.step = 0
 
     def initialize_agents(self, num_agents):
         agents = []
@@ -146,9 +147,13 @@ class Simulation:
                 break
             
             # Stop if there is no progress in proportions of deaths
-            if len(self.d_proportions) >= 50 and all(x == self.d_proportions[-1] for x in self.d_proportions[-50:]):
-                break
-            
+            # if len(self.d_proportions) >= 50 and all(x == self.d_proportions[-1] for x in self.d_proportions[-50:]):
+            #     break
+            if len(self.d_proportions) >= 50:
+                tail = self.d_proportions[-50:]
+                if max(tail) - min(tail) < 1e-9:
+                    break
+
         if self.plot:
             clear_output(wait=False)
             self.plot_hist()
@@ -258,7 +263,7 @@ class Simulation:
         - NumPy array containing:
           [last_step, max_deaths, peak_infection, infection_auc, avg_viral_age, avg_immunity]
         """
-        dead_count = max(self.d_proportions)
+        max_deaths_prop = max(self.d_proportions)
         max_infected = max(self.i_proportions)
         time_steps = range(len(self.i_proportions))
         auc_infected = np.trapz(self.i_proportions, x=time_steps)  # Area under curve
@@ -274,5 +279,5 @@ class Simulation:
         total_vulnerable = len([agent for agent in self.agents if agent.vul_type == 'high'])
         vulnerable_dead = len([agent for agent in who_died if agent.vul_type == 'high'])
         vulnerable_proportion_dead = vulnerable_dead / total_vulnerable if total_vulnerable > 0 else 0
-        return np.array([self.step, dead_count, max_infected, auc_infected, avg_viral_age, avg_immunity,
+        return np.array([self.step, max_deaths_prop, max_infected, auc_infected, avg_viral_age, avg_immunity,
                          non_vulnerable_proportion_dead,vulnerable_proportion_dead,self.seed])
