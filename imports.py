@@ -8,6 +8,9 @@ from tqdm import tqdm
 import pandas as pd
 import seaborn as sns
 import math
+# imports.py
+import networkx as nx
+from collections import defaultdict
 
 # State mapping for grid visualization with colors
 state_mapping = {

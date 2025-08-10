@@ -1,5 +1,5 @@
 from imports import *
-from agent_class import FullAgent
+from agent_class import FullAgent, FullAgent2
 
 class Simulation:
     """
@@ -251,3 +251,164 @@ class Simulation:
         vulnerable_proportion_dead = vulnerable_dead / total_vulnerable if total_vulnerable > 0 else 0
         return np.array([self.step, max_deaths_prop, max_infected, auc_infected, avg_viral_age, avg_immunity,
                          non_vulnerable_proportion_dead,vulnerable_proportion_dead,self.seed])
+        
+        
+class Simulation2:
+    def __init__(self, grid_size=25, num_agents=600, agent_class=FullAgent2,
+                 init_infected_proportion=0.1, proportion_vulnerable=0.1, vul_penalty=0.5,
+                 infection_prob=0.25, recovery_time=30, death_prob=0.05,
+                 vax_vulnerable=False, vax_all=False, vax_effect=0.7,
+                 viral_age_effect=0.1, immune_adaptation_effect=0.1,
+                 plot=True, seed=True,
+                 # NEW: network and migration controls
+                 G=None,                # networkx.Graph; if None we’ll generate one
+                 num_nodes=8,           # used only if G is None
+                 epsilon_migrate=0.05   # per-step probability of hopping to a neighbor node
+                 ):
+        self.step = 0  # initialize step counter early
+        self.num_agents = num_agents
+        self.grid_size = grid_size
+        self.agent_class = agent_class
+        self.plot = plot
+
+        # seeding (unchanged)
+        if seed:
+            ss = np.random.SeedSequence()
+            seed_int = int(ss.generate_state(1, dtype=np.uint32)[0])
+            self.seed = seed_int
+            random.seed(seed_int)
+            np.random.seed(seed_int)
+        else:
+            self.seed = None
+        self.rng = random.Random(self.seed) if self.seed is not None else random.Random()
+        self.nprng = np.random.default_rng(self.seed)
+
+        # disease & vax params (unchanged)
+        self.init_infected_proportion = init_infected_proportion
+        self.proportion_vulnerable = proportion_vulnerable
+        self.vul_penalty = vul_penalty
+        self.infection_prob = infection_prob
+        self.recovery_time = recovery_time
+        self.death_prob = death_prob
+        self.vax_vulnerable = vax_vulnerable
+        self.vax_all = vax_all
+        self.vax_effect = vax_effect
+        self.viral_age_effect = viral_age_effect
+        self.immune_adaptation_effect = immune_adaptation_effect
+
+        # NEW: network + migration knobs
+        self.epsilon_migrate = epsilon_migrate
+        if G is None:
+            # simple connected random graph
+            # regenerate until connected so agents actually can move around
+            while True:
+                G_try = nx.erdos_renyi_graph(n=num_nodes, p=0.3, seed=self.seed)
+                if nx.is_connected(G_try):
+                    self.G = G_try
+                    break
+        else:
+            self.G = G
+
+        # NEW: per-node grids (each node has its own grid)
+        self.node_grids = {n: np.zeros((grid_size, grid_size)) for n in self.G.nodes}
+
+        # Initialize agents with node assignments
+        self.agents = self.initialize_agents(num_agents)
+
+        # tracking (unchanged)
+        self.s_proportions, self.i_proportions, self.r_proportions, self.d_proportions = [], [], [], []
+
+    def initialize_agents(self, num_agents):
+        agents = []
+        nodes = list(self.G.nodes)
+        for _ in range(num_agents):
+            node_id = self.rng.choice(nodes)
+            x = self.rng.randint(0, self.grid_size - 1)
+            y = self.rng.randint(0, self.grid_size - 1)
+            state = 'I' if self.rng.random() < self.init_infected_proportion else 'S'
+            vul_type = 'high' if self.rng.random() < self.proportion_vulnerable else 'low'
+            vaxxed = self.vax_all or (vul_type == 'high' and self.vax_vulnerable)
+
+            agent = self.agent_class(
+                x, y,
+                grid_size=self.grid_size,
+                infection_prob=self.infection_prob,
+                recovery_time=self.recovery_time,
+                death_prob=self.death_prob,
+                vul_type=vul_type,
+                vul_penalty=self.vul_penalty,
+                state=state,
+                vaxxed=vaxxed,
+                vax_effect=self.vax_effect,
+                viral_age_effect=self.viral_age_effect,
+                immune_adaptation_effect=self.immune_adaptation_effect,
+                rng=self.rng,
+                node_id=node_id,        # NEW
+            )
+            agents.append(agent)
+            self.node_grids[node_id][x, y] = state_mapping[state]
+        return agents
+
+    def _rebuild_node_grids(self):
+        # Clear and rebuild all node grids from agent positions
+        for n in self.node_grids:
+            self.node_grids[n][:] = 0
+        for a in self.agents:
+            self.node_grids[a.node_id][a.x, a.y] = state_mapping[a.state]
+
+    def update_agents(self):
+        """
+        1) Update within-node disease & local movement.
+        2) Perform cross-node migration with probability epsilon.
+        3) Rebuild per-node grids.
+        """
+        # Group agents by current node
+        node_to_agents = defaultdict(list)
+        for a in self.agents:
+            node_to_agents[a.node_id].append(a)
+
+        # 1) Within-node updates (infection/movement as before, but scoped to same node)
+        for node_id, node_agents in node_to_agents.items():
+            for agent in node_agents:
+                (x, y), state = agent.update(node_agents)  # pass only same-node agents
+
+        # 2) Cross-node migration at end of step
+        for agent in self.agents:
+            if agent.state == 'D':
+                continue  # dead agents don't migrate
+            if self.rng.random() < self.epsilon_migrate:
+                nbrs = list(self.G.neighbors(agent.node_id))
+                if nbrs:
+                    new_node = self.rng.choice(nbrs)
+                    agent.migrate_to(new_node, self.grid_size)
+
+        # 3) Refresh per-node grids
+        self._rebuild_node_grids()
+
+    def run(self, iterations=1000, plot_grid=False):
+        for step in range(iterations):
+            self.step = step
+            print(step, end='\r')  # Print step number in place
+            self.update_agents()
+
+            states = [a.state for a in self.agents]
+            s_prop = states.count('S') / len(self.agents)
+            i_prop = states.count('I') / len(self.agents)
+            r_prop = states.count('R') / len(self.agents)
+            d_prop = states.count('D') / len(self.agents)
+
+            self.s_proportions.append(s_prop)
+            self.i_proportions.append(i_prop)
+            self.r_proportions.append(r_prop)
+            self.d_proportions.append(d_prop)
+
+            if i_prop == 0:
+                break
+            if len(self.d_proportions) >= 50 and all(x == self.d_proportions[-1] for x in self.d_proportions[-50:]):
+                break
+
+        if self.plot:
+            clear_output(wait=False)
+            self.plot_hist()
+            # (Optional) You can add a small per-node grid panel plot if you want
+            time.sleep(0.01)
