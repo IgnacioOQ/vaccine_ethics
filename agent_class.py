@@ -280,6 +280,7 @@ class FullAgent:
         # Check for possible infection from nearby infected agents
         if self.state == 'S':
             # Use a shuffled copy to avoid mutating the shared list during iteration
+            # This does what it says it does
             for agent in self.rng.sample(agents, len(agents)):
                 if agent.x == self.x and agent.y == self.y and agent.state == 'I':
                     # Apply vaccine effect to infection probability if vaccinated
