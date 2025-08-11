@@ -254,7 +254,7 @@ class Simulation:
         
         
 class Simulation2:
-    def __init__(self, grid_size=25, num_agents=600, agent_class=FullAgent2,
+    def __init__(self, grid_size=20, num_agents=500, agent_class=FullAgent2,
                  init_infected_proportion=0.1, proportion_vulnerable=0.1, vul_penalty=0.5,
                  infection_prob=0.25, recovery_time=30, death_prob=0.05,
                  vax_vulnerable=False, vax_all=False, vax_effect=0.7,
@@ -262,7 +262,7 @@ class Simulation2:
                  plot=True, seed=True,
                  # NEW: network and migration controls
                  G=None,                # networkx.Graph; if None we’ll generate one
-                 num_nodes=8,           # used only if G is None
+                 num_nodes=7,           # used only if G is None
                  epsilon_migrate=0.05   # per-step probability of hopping to a neighbor node
                  ):
         self.step = 0  # initialize step counter early
@@ -301,11 +301,22 @@ class Simulation2:
         if G is None:
             # simple connected random graph
             # regenerate until connected so agents actually can move around
-            while True:
-                G_try = nx.erdos_renyi_graph(n=num_nodes, p=0.3, seed=self.seed)
-                if nx.is_connected(G_try):
+            # while True:
+            #     G_try = nx.erdos_renyi_graph(n=num_nodes, p=0.5, seed=self.seed)
+            #     if nx.is_connected(G_try):
+            #         self.G = G_try
+            #         break
+            # replace the while True block
+            max_tries = 500
+            for _ in range(max_tries):
+                # vary the seed so you actually get different graphs
+                s = self.rng.randrange(2**32)
+                G_try = nx.erdos_renyi_graph(n=num_nodes, p=0.3, seed=s)
+                if num_nodes == 1 or nx.is_connected(G_try):
                     self.G = G_try
                     break
+            else:
+                raise RuntimeError("Couldn't generate a connected graph. Increase p or num_nodes.")
         else:
             self.G = G
 
@@ -412,3 +423,70 @@ class Simulation2:
             self.plot_hist()
             # (Optional) You can add a small per-node grid panel plot if you want
             time.sleep(0.01)
+            
+    def plot_hist(self):
+        """
+        Plots the final state proportions and how states evolved over time (smoothed).
+        """
+        def smooth(data, window_size=5):
+            pad = window_size // 2
+            padded = np.pad(data, (pad, pad), mode='edge')
+            return np.convolve(padded, np.ones(window_size)/window_size, mode='valid')
+
+        fig, axs = plt.subplots(1, 2, figsize=(12, 4))
+
+        # Final proportions (bar chart)
+        s_prop = self.s_proportions[-1]
+        i_prop = self.i_proportions[-1]
+        d_prop = self.d_proportions[-1]
+
+        axs[0].bar(['S', 'I', 'D'], [s_prop, i_prop, d_prop], color=['green', 'red', 'black'])
+        axs[0].set_ylim(0, 1)
+        axs[0].set_ylabel('Proportion')
+        axs[0].set_title('Final Agent State Proportions')
+
+        # Smooth time series with padding
+        window_size = 5
+        s_series = smooth(self.s_proportions, window_size)
+        i_series = smooth(self.i_proportions, window_size)
+        d_series = smooth(self.d_proportions, window_size)
+
+        # Time evolution (line chart)
+        axs[1].plot(range(len(s_series)), s_series, label='S', color='green')
+        axs[1].plot(range(len(i_series)), i_series, label='I', color='red')
+        axs[1].plot(range(len(d_series)), d_series, label='D', color='black')
+        axs[1].set_xlim(0, max(2, len(s_series) + 1))
+        axs[1].set_ylim(0, 1)
+        axs[1].set_xlabel('Time Steps')
+        axs[1].set_ylabel('Proportion')
+        axs[1].legend()
+        axs[1].set_title('Smoothed State Proportions Over Time')
+
+        plt.show()
+
+    def generate_simulation_report(self):
+        """
+        Generates a summary report of the simulation results.
+
+        Returns:
+        - NumPy array containing:
+          [last_step, max_deaths, peak_infection, infection_auc, avg_viral_age, avg_immunity]
+        """
+        max_deaths_prop = max(self.d_proportions)
+        max_infected = max(self.i_proportions)
+        time_steps = range(len(self.i_proportions))
+        auc_infected = np.trapz(self.i_proportions, x=time_steps)  # Area under curve
+
+        avg_viral_age = np.mean([agent.viral_age for agent in self.agents])
+        avg_immunity = np.mean([agent.immunity_level for agent in self.agents])
+
+        total_non_vulnerable = len([agent for agent in self.agents if agent.vul_type == 'low'])
+        who_died = [agent for agent in self.agents if agent.state == 'D']
+        non_vulnerable_dead = len([agent for agent in who_died if agent.vul_type == 'low'])
+        non_vulnerable_proportion_dead = non_vulnerable_dead / total_non_vulnerable if total_non_vulnerable > 0 else 0
+        # we later want to compare between the vax all vs vax vulnerable
+        total_vulnerable = len([agent for agent in self.agents if agent.vul_type == 'high'])
+        vulnerable_dead = len([agent for agent in who_died if agent.vul_type == 'high'])
+        vulnerable_proportion_dead = vulnerable_dead / total_vulnerable if total_vulnerable > 0 else 0
+        return np.array([self.step, max_deaths_prop, max_infected, auc_infected, avg_viral_age, avg_immunity,
+                         non_vulnerable_proportion_dead,vulnerable_proportion_dead,self.seed])
