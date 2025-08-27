@@ -11,7 +11,7 @@ class Simulation:
                  infection_prob=0.25, recovery_time=30, death_prob=0.05,
                  vax_vulnerable=False, vax_all=False,
                  vax_effect=0.7, viral_age_effect=0.1, immune_adaptation_effect=0.1,
-                 plot=True, seed=True):
+                 plot=True, rngseed=None, nprngseed=None):
         """
         Initializes the simulation grid and the agents.
 
@@ -37,19 +37,21 @@ class Simulation:
         self.grid = np.zeros((grid_size, grid_size))  # Empty grid
         self.agent_class = agent_class
 
-        if seed:  # seed is a boolean
-            ss = np.random.SeedSequence()
-            seed_int = int(ss.generate_state(1, dtype=np.uint32)[0])
-            self.seed = seed_int
-            random.seed(seed_int)       # for Python's random
-            np.random.seed(seed_int)    # for NumPy
-        else:
-            self.seed = None
+        # if seed:  # seed is a boolean
+        #     ss = np.random.SeedSequence()
+        #     seed_int = int(ss.generate_state(1, dtype=np.uint32)[0])
+        #     self.seed = seed_int
+        #     random.seed(seed_int)       # for Python's random
+        #     np.random.seed(seed_int)    # for NumPy
+        # else:
+        #     self.seed = None
 
-        # Per-simulation RNGs (avoid global cross-talk)
-        self.rng = random.Random(self.seed) if self.seed is not None else random.Random()
-        self.nprng = np.random.default_rng(self.seed)  # if you later need NumPy RNG
-
+        # # Per-simulation RNGs (avoid global cross-talk)
+        # self.rng = random.Random(self.seed) if self.seed is not None else random.Random()
+        # self.nprng = np.random.default_rng(self.seed)  # if you later need NumPy RNG
+        self.rng = rngseed
+        self.nprng = nprngseed
+        
         # Disease and agent behavior parameters
         self.init_infected_proportion = init_infected_proportion
         self.proportion_vulnerable = proportion_vulnerable
