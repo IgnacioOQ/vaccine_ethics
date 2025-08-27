@@ -49,8 +49,8 @@ class Simulation:
         # # Per-simulation RNGs (avoid global cross-talk)
         # self.rng = random.Random(self.seed) if self.seed is not None else random.Random()
         # self.nprng = np.random.default_rng(self.seed)  # if you later need NumPy RNG
-        self.rng = rngseed
-        self.nprng = nprngseed
+        self.rng = rngseed if rngseed is not None else random.Random()
+        self.nprng = nprngseed if nprngseed is not None else np.random.default_rng()
         
         # Disease and agent behavior parameters
         self.init_infected_proportion = init_infected_proportion
