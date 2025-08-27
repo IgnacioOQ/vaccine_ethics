@@ -11,7 +11,7 @@ class Simulation:
                  infection_prob=0.25, recovery_time=30, death_prob=0.05,
                  vax_vulnerable=False, vax_all=False,
                  vax_effect=0.7, viral_age_effect=0.1, immune_adaptation_effect=0.1,
-                 plot=True, rngseed=None, nprngseed=None):
+                 plot=True, rngseed=None, nprngseed=None, seed=0):
         """
         Initializes the simulation grid and the agents.
 
@@ -51,6 +51,7 @@ class Simulation:
         # self.nprng = np.random.default_rng(self.seed)  # if you later need NumPy RNG
         self.rng = rngseed if rngseed is not None else random.Random()
         self.nprng = nprngseed if nprngseed is not None else np.random.default_rng()
+        self.seed = seed  # store the original seed value (can be None)
         
         # Disease and agent behavior parameters
         self.init_infected_proportion = init_infected_proportion
