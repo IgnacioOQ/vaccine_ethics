@@ -239,7 +239,7 @@ class Simulation:
         max_deaths_prop = max(self.d_proportions)
         max_infected = max(self.i_proportions)
         time_steps = range(len(self.i_proportions))
-        auc_infected = np.trapz(self.i_proportions, x=time_steps)  # Area under curve
+        auc_infected = np.trapezoid(self.i_proportions, x=time_steps)  # Area under curve
 
         avg_viral_age = np.mean([agent.viral_age for agent in self.agents])
         avg_immunity = np.mean([agent.immunity_level for agent in self.agents])
@@ -478,7 +478,7 @@ class Simulation2:
         max_deaths_prop = max(self.d_proportions)
         max_infected = max(self.i_proportions)
         time_steps = range(len(self.i_proportions))
-        auc_infected = np.trapz(self.i_proportions, x=time_steps)  # Area under curve
+        auc_infected = np.trapezoid(self.i_proportions, x=time_steps)  # Area under curve
 
         avg_viral_age = np.mean([agent.viral_age for agent in self.agents])
         avg_immunity = np.mean([agent.immunity_level for agent in self.agents])
@@ -725,7 +725,7 @@ class Simulation3:
         max_deaths_prop = max(self.d_proportions)
         max_infected = max(self.i_proportions)
         time_steps = range(len(self.i_proportions))
-        auc_infected = np.trapz(self.i_proportions, x=time_steps)
+        auc_infected = np.trapezoid(self.i_proportions, x=time_steps)
         avg_viral_age = np.mean([agent.viral_age for agent in self.agents])
         avg_immunity = np.mean([agent.immunity_level for agent in self.agents])
 
