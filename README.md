@@ -42,6 +42,12 @@ Defined in `agent_class.py`, agents (`FullAgent`, `FullAgent2`) possess individu
 <!-- content -->
 The project uses **Bayesian Optimization** (via `Run_Simulations_Final.ipynb`) to explore the parameter space and identify optimal strategies that minimize infections and deaths.
 
+### Precautionary Principle Analysis
+- status: active
+- type: documentation
+<!-- content -->
+A specialized notebook, `Precautionary_Principle_Analysis.ipynb`, is available to study the **Precautionary Principle**. It performs two separate parameter searches to identify the **worst-case death scenarios** for "Vaccinate All" vs. "Vaccinate Vulnerable Only" strategies, allowing for a minimax analysis of the results.
+
 ## Usage
 - status: active
 - type: documentation

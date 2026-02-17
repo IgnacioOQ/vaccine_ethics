@@ -42,3 +42,24 @@ This log documents the changes made to the project by AI agents.
 - **Action**:
     - Updated `README.md` to reflect the new notebook name and detailed the available simulation metrics.
     - Created `AGENTS_LOG.md` (this file) to track project history.
+
+## 2026-02-17: Precautionary Principle Analysis
+
+### 1. New Notebook Creation
+- status: done
+- type: task
+- owner: antigravity
+<!-- content -->
+- **Objective**: Study the Precautionary Principle by identifying worst-case scenarios.
+- **Action**:
+    - Created `Precautionary_Principle_Analysis.ipynb`.
+    - Implemented separate Bayesian Optimization searches for "Vaccinate All" and "Vaccinate Vulnerable Only" strategies to maximize death proportions.
+    - Added analysis to compare worst-case outcomes.
+
+### 2. Documentation Updates
+- status: done
+- type: task
+- owner: antigravity
+<!-- content -->
+- **Action**:
+    - Updated `README.md` to include the new `Precautionary_Principle_Analysis.ipynb` notebook.
