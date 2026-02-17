@@ -36,11 +36,11 @@ Defined in `agent_class.py`, agents (`FullAgent`, `FullAgent2`) possess individu
     - `viral_age`: Tracks viral mutations/passage.
     - `immunity_level`: Adaptive immunity gained from recovery.
 
-## Optimization
+### Optimization
 - status: active
 - type: documentation
 <!-- content -->
-The project uses **Bayesian Optimization** (via `Run_Simulations_Final_New.ipynb`) to explore the parameter space and identify optimal strategies that minimize infections and deaths.
+The project uses **Bayesian Optimization** (via `Run_Simulations_Final.ipynb`) to explore the parameter space and identify optimal strategies that minimize infections and deaths.
 
 ## Usage
 - status: active
@@ -49,9 +49,30 @@ The project uses **Bayesian Optimization** (via `Run_Simulations_Final_New.ipynb
 
 ### Dependencies
 - Python 3.x
-- `numpy`, `matplotlib`, `pandas`, `seaborn`, `networkx`, `tqdm`, `jupyter`
+- `numpy`, `matplotlib`, `pandas`, `seaborn`, `networkx`, `tqdm`, `jupyter`, `scikit-optimize`
 
 ### Running the Simulation
-1.  Open `Run_Simulations_Final_New.ipynb` in Jupyter Notebook.
-2.  Execute the cells to run the simulation and optimization routines.
-3.  Process results are visualized using `matplotlib` and saved as CSVs (e.g., `bo_results_fixed_params.csv`).
+1.  Open `Run_Simulations_Final.ipynb` in Jupyter Notebook.
+2.  The simulation is now consolidated into a single notebook that includes seeding for reproducibility.
+3.  Execute the cells to run the simulation and optimization routines.
+4.  Process results are visualized using `matplotlib` and saved as CSVs (e.g., `bo_results_fixed_params_seeding.csv`).
+
+## Simulation Metrics
+- status: active
+- type: documentation
+<!-- content -->
+The simulation report now returns a 14-element vector containing key epidemiological metrics:
+1.  **Step**: The final simulation step.
+2.  **Max Deaths Proportion**: Peak proportion of deaths.
+3.  **Max Infected**: Peak proportion of infected agents.
+4.  **AUC Infected**: Area Under the Curve of infection over time.
+5.  **Avg Viral Age**: Average age of the virus genome (indicating mutation).
+6.  **Avg Immunity**: Average immunity level of the population.
+7.  **Non-vulnerable Dead Prop**: Proportion of non-vulnerable agents who died.
+8.  **Vulnerable Dead Prop**: Proportion of vulnerable agents who died.
+9.  **Seed**: Random seed used for the simulation.
+10. **Total Unique Infected**: Count of unique agents infected at least once.
+11. **Total Infections**: Total count of infection events (including reinfections).
+12. **Vul Infections**: Total infections among vulnerable agents.
+13. **Non-vul Infections**: Total infections among non-vulnerable agents.
+14. **Avg Reinfections**: Average number of times an agent was reinfected.
