@@ -71,6 +71,9 @@ class FullAgent:
         self.immunity_level = 0  # Tracks the agent's learned immunity from past infections
         self.viral_age_effect = viral_age_effect
         self.immune_adaptation_effect = immune_adaptation_effect
+        
+        # Infection tracking
+        self.infection_count = 1 if state == 'I' else 0
 
     def move(self):
         """
@@ -127,6 +130,7 @@ class FullAgent:
                     # Infect if random chance succeeds
                     if self.rng.random() < infection_prob:
                         self.state = 'I'
+                        self.infection_count += 1
                         self.viral_age = agent.viral_age + 1  # Inherit and increment virus age
                         self.time_infected = 0
                         break  # Only one infection attempt per time step
@@ -213,6 +217,9 @@ class FullAgent2:
         self.viral_age_effect = viral_age_effect
         self.immune_adaptation_effect = immune_adaptation_effect
 
+        # Infection tracking
+        self.infection_count = 1 if state == 'I' else 0
+
     def move(self):
         """
         Randomly moves the agent one step in the grid (up, down, left, or right).
@@ -268,6 +275,7 @@ class FullAgent2:
                     # Infect if random chance succeeds
                     if self.rng.random() < infection_prob:
                         self.state = 'I'
+                        self.infection_count += 1
                         self.viral_age = agent.viral_age + 1  # Inherit and increment virus age
                         self.time_infected = 0
                         break  # Only one infection attempt per time step

@@ -1,6 +1,12 @@
 from imports import *
 from agent_class import FullAgent, FullAgent2
 
+# NumPy 2.0+ compatibility for trapezoidal integration
+try:
+    trapezoid = np.trapezoid
+except AttributeError:
+    trapezoid = np.trapz
+
 class Simulation:
     """
     Manages the entire simulation, including the grid, agents, and simulation logic.
@@ -239,7 +245,7 @@ class Simulation:
         max_deaths_prop = max(self.d_proportions)
         max_infected = max(self.i_proportions)
         time_steps = range(len(self.i_proportions))
-        auc_infected = np.trapezoid(self.i_proportions, x=time_steps)  # Area under curve
+        auc_infected = trapezoid(self.i_proportions, x=time_steps)  # Area under curve
 
         avg_viral_age = np.mean([agent.viral_age for agent in self.agents])
         avg_immunity = np.mean([agent.immunity_level for agent in self.agents])
@@ -252,8 +258,21 @@ class Simulation:
         total_vulnerable = len([agent for agent in self.agents if agent.vul_type == 'high'])
         vulnerable_dead = len([agent for agent in who_died if agent.vul_type == 'high'])
         vulnerable_proportion_dead = vulnerable_dead / total_vulnerable if total_vulnerable > 0 else 0
-        return np.array([self.step, max_deaths_prop, max_infected, auc_infected, avg_viral_age, avg_immunity,
-                         non_vulnerable_proportion_dead,vulnerable_proportion_dead,self.seed])
+
+        # Infection stats
+        infected_agents = [a for a in self.agents if a.infection_count > 0]
+        total_unique_infected = len(infected_agents)
+        total_infections = sum([a.infection_count for a in self.agents])
+        
+        vul_infections = sum([a.infection_count for a in self.agents if a.vul_type == 'high'])
+        non_vul_infections = sum([a.infection_count for a in self.agents if a.vul_type == 'low'])
+        
+        avg_reinfections = total_infections / total_unique_infected if total_unique_infected > 0 else 0
+        return np.array([self.step, max_deaths_prop, max_infected, auc_infected,
+                         avg_viral_age, avg_immunity,
+                         non_vulnerable_proportion_dead, vulnerable_proportion_dead,
+                         self.seed,
+                         total_unique_infected, total_infections, vul_infections, non_vul_infections, avg_reinfections])
         
         
 class Simulation2:
@@ -478,7 +497,7 @@ class Simulation2:
         max_deaths_prop = max(self.d_proportions)
         max_infected = max(self.i_proportions)
         time_steps = range(len(self.i_proportions))
-        auc_infected = np.trapezoid(self.i_proportions, x=time_steps)  # Area under curve
+        auc_infected = trapezoid(self.i_proportions, x=time_steps)  # Area under curve
 
         avg_viral_age = np.mean([agent.viral_age for agent in self.agents])
         avg_immunity = np.mean([agent.immunity_level for agent in self.agents])
@@ -491,8 +510,21 @@ class Simulation2:
         total_vulnerable = len([agent for agent in self.agents if agent.vul_type == 'high'])
         vulnerable_dead = len([agent for agent in who_died if agent.vul_type == 'high'])
         vulnerable_proportion_dead = vulnerable_dead / total_vulnerable if total_vulnerable > 0 else 0
-        return np.array([self.step, max_deaths_prop, max_infected, auc_infected, avg_viral_age, avg_immunity,
-                         non_vulnerable_proportion_dead,vulnerable_proportion_dead,self.seed])
+
+        # Infection stats
+        infected_agents = [a for a in self.agents if a.infection_count > 0]
+        total_unique_infected = len(infected_agents)
+        total_infections = sum([a.infection_count for a in self.agents])
+        
+        vul_infections = sum([a.infection_count for a in self.agents if a.vul_type == 'high'])
+        non_vul_infections = sum([a.infection_count for a in self.agents if a.vul_type == 'low'])
+        
+        avg_reinfections = total_infections / total_unique_infected if total_unique_infected > 0 else 0
+        return np.array([self.step, max_deaths_prop, max_infected, auc_infected,
+                         avg_viral_age, avg_immunity,
+                         non_vulnerable_proportion_dead, vulnerable_proportion_dead,
+                         self.seed,
+                         total_unique_infected, total_infections, vul_infections, non_vul_infections, avg_reinfections])
         
         
 class Simulation3:
@@ -725,7 +757,7 @@ class Simulation3:
         max_deaths_prop = max(self.d_proportions)
         max_infected = max(self.i_proportions)
         time_steps = range(len(self.i_proportions))
-        auc_infected = np.trapezoid(self.i_proportions, x=time_steps)
+        auc_infected = trapezoid(self.i_proportions, x=time_steps)
         avg_viral_age = np.mean([agent.viral_age for agent in self.agents])
         avg_immunity = np.mean([agent.immunity_level for agent in self.agents])
 
@@ -738,7 +770,18 @@ class Simulation3:
         vulnerable_dead = len([agent for agent in who_died if agent.vul_type == 'high'])
         vulnerable_proportion_dead = vulnerable_dead / total_vulnerable if total_vulnerable > 0 else 0
 
+        # Infection stats
+        infected_agents = [a for a in self.agents if a.infection_count > 0]
+        total_unique_infected = len(infected_agents)
+        total_infections = sum([a.infection_count for a in self.agents])
+        
+        vul_infections = sum([a.infection_count for a in self.agents if a.vul_type == 'high'])
+        non_vul_infections = sum([a.infection_count for a in self.agents if a.vul_type == 'low'])
+        
+        avg_reinfections = total_infections / total_unique_infected if total_unique_infected > 0 else 0
+
         return np.array([self.step, max_deaths_prop, max_infected, auc_infected,
                          avg_viral_age, avg_immunity,
                          non_vulnerable_proportion_dead, vulnerable_proportion_dead,
-                         self.seed])
+                         self.seed,
+                         total_unique_infected, total_infections, vul_infections, non_vul_infections, avg_reinfections])
