@@ -1,0 +1,15 @@
+# LaTeX build artifacts — aux-vs-out-dir split (LATEX_WRITING_SKILL.md):
+# intermediates are regenerable and must not be tracked; main.pdf stays tracked.
+build/
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.ent
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.run.xml
+*.synctex.gz
