@@ -95,6 +95,42 @@ last_checked: '2026-06-23'
 
 ---
 
+## Strip Colab/Drive paths from active notebooks
+
+```yaml
+status: todo
+type: task
+id: todo.strip_colab_paths
+description: Remove hardcoded /content/drive Colab paths so the active notebooks run unattended and pass HOUSEKEEPING Phase 2.1.
+owner: agent
+estimate: 30m
+difficulty: low
+value: high
+blocked_by: []
+last_checked: '2026-06-23'
+```
+
+**Context:** HOUSEKEEPING Phase 2.1 fails — `grep -rl "/content/drive" 0*/`
+returns `01_optimization/Run_Simulations_Final.ipynb` and
+`02_precautionary/Precautionary_Principle_Analysis.ipynb`. The Colab/Drive paths
+make these notebooks fail in the Restart-and-Run-All sweep, which is why the
+sweep is currently skipped.
+
+**Preconditions:** none.
+
+**Steps:**
+1. Locate the `/content/drive` references in each notebook.
+2. Replace them with the portable `../results/` (or repo-relative) paths used
+   elsewhere in the strand layout.
+3. Re-run `grep -rl "/content/drive" 0*/` — it should return nothing.
+
+**Verification:** the Phase 2.1 grep is empty; both notebooks open and resolve
+their I/O paths without referencing Google Drive.
+
+**On completion:** delete this task block.
+
+---
+
 ## Task template
 
 ````markdown

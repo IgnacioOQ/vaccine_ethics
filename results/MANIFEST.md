@@ -24,6 +24,8 @@ figure or CSV. `*.png`, `*.html`, and `*.csv` here are tracked; regenerable
 | `precautionary_vax_all_iterations_20260303-132721.csv` | `02_precautionary/Precautionary_Principle_Analysis.ipynb` | Read by `plots.ipynb`. |
 | `precautionary_vax_vuln_iterations_20260303-132721.csv` | `02_precautionary/Precautionary_Principle_Analysis.ipynb` | Read by `plots.ipynb`. |
 | `bo_results_fixed_params.csv` | `01_optimization/Run_Simulations_Final.ipynb` | Optimization sweep output. |
+| `bo_results_fixed_params_seeding.csv` | `01_optimization/Run_Simulations_Final.ipynb` | Seeding input reloaded by the optimization notebook. |
+| `vax_hurts_region_seeding.csv` | `01_optimization/Run_Simulations_Final.ipynb` | Seeding input reloaded by the optimization notebook. |
 
 ## Open items
 

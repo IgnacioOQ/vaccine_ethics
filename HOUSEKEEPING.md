@@ -104,30 +104,41 @@ Research code carries no lint/format merge gate. Spot-check only:
 ## Latest Report
 
 **Date:** 2026-06-23
-**Trigger:** Initial repo reorganization to ACADEMIC_REPO_SKILL layout.
+**Trigger:** Periodic audit run (`/HOUSEKEEPING.md`).
 
 ```yaml
 format:        n/a
 lint:          n/a
 types:         n/a
-tests:         { engine_smoke: pass, notebooks: not_run }
+tests:         { engine_smoke: pass (6 passed), notebooks: not_run }
 integration:   n/a
 dependencies:  ok
 dead_code:     ok
 build:         n/a
-docs:          ok
+docs:          ok (one MANIFEST traceability gap fixed)
 ```
 
 ### Notable
 
-Repo migrated from a flat dump to strand layout. Engine smoke verification
-passes (`Simulation` runs, 14-element report, both vaccination strategies).
-`pytest` not yet run in-repo (pytest not installed in the bundled `.conda` env);
-`tests/` is authored and ready. Heavy Bayesian-optimization notebooks were not
-executed end-to-end.
+`pytest` now green — **6 passed** in the `.conda` env (`pytest`, `nbconvert`,
+`ipykernel` were missing and were installed). Phase 2.2 clean: no tracked build
+artifacts. Phase 4 dependency/doc checks clean: core pins not flagged outdated,
+README strand map and run commands still match the tree. Fixed a figure-
+traceability gap — added the two present-but-unlisted seeding CSVs
+(`bo_results_fixed_params_seeding.csv`, `vax_hurts_region_seeding.csv`) to
+`results/MANIFEST.md`; their presence partially advances `todo.regenerate_results`.
+
+The notebook Restart-and-Run-All sweep was **skipped** (sanctioned by Phase 3):
+the two heavy notebooks (`Run_Simulations_Final.ipynb`,
+`Precautionary_Principle_Analysis.ipynb`) carry `/content/drive` Colab paths and
+would fail unattended; the remaining validation notebooks were not executed.
 
 ### Outstanding
 
-- Install `pytest` and run the suite; execute the optimization/precautionary
-  notebooks end-to-end to regenerate the `*_seeding.csv` inputs.
-- Resolve unattributed figures in `results/MANIFEST.md`.
+- **Phase 2.1 fails:** `grep -rl "/content/drive" 0*/` still returns
+  `01_optimization/Run_Simulations_Final.ipynb` and
+  `02_precautionary/Precautionary_Principle_Analysis.ipynb`. Strip the Colab/Drive
+  paths so the notebooks are portable and runnable in the sweep.
+- Execute the optimization/precautionary notebooks end-to-end (`todo.regenerate_results`).
+- Resolve the unattributed PNGs (`example_plot.png`, `output.png`) and the
+  misspelled duplicate `precautionaty_plot.png` in `results/MANIFEST.md`.
