@@ -1,84 +1,106 @@
 # Vaccine Ethics Simulation
-- status: active
-- type: documentation
-- id: vaccine_ethics.readme
-- last_checked: 2026-02-17
-<!-- content -->
-This repository contains an **Agent-Based Model (ABM)** designed to simulate and analyze the ethical and epidemiological implications of vaccine distribution strategies.
 
-## Overview
-- status: active
-- type: documentation
-<!-- content -->
-The simulation models the spread of an infectious disease (SEIRD model: Susceptible, Exposed/Infected, Recovered, Dead) within a population of agents. It incorporates factors such as:
-- **Vaccine Hesitancy & Availability**: Strategies for vaccinating the entire population vs. prioritizing vulnerable groups.
-- **Age-Based Vulnerability**: Agents have different risk profiles (`high` vs. `low` vulnerability).
-- **Social Network Dynamics**: Agents interact on a grid and can migrate between nodes in a network (represented as an Erdos-Renyi graph).
-- **Evolutionary Viral Dynamics**: Viral age and immune adaptation affect transmission and recovery rates.
+An **agent-based model (ABM)** for studying the ethical and epidemiological
+trade-offs of vaccine distribution strategies — in particular, *"Vaccinate
+All"* versus *"Vaccinate Vulnerable Only"* — and the conditions under which a
+precautionary strategy is justified.
 
-## Key Components
-- status: active
-- type: documentation
-<!-- content -->
+## Thesis
 
-### Simulation
-The core logic is defined in `simulation_class.py`.
-- **Simulation**: A single isolated grid environment.
-- **Simulation2**: A network of multiple grid-based nodes where agents can migrate.
-- **Simulation3**: Similar to `Simulation2` but supports heterogeneous grid sizes and population densities per node.
+Vaccinating everyone is not always strictly better than protecting only the
+vulnerable. Under an evolutionary model of viral dynamics (mutation, immune
+adaptation, reinfection), broad vaccination can in some parameter regimes
+*increase* total harm. This repository simulates a SEIRD process on a
+networked population of heterogeneous agents to locate those regimes and to
+analyze them through a precautionary-principle (minimax) lens.
 
-### Agents
-Defined in `agent_class.py`, agents (`FullAgent`, `FullAgent2`) possess individual states and attributes:
-- **Health State**: `S` (Susceptible), `I` (Infected), `R` (Recovered), `D` (Dead).
-- **Attributes**:
-    - `vul_type`: Vulnerability level (`high` or `low`).
-    - `vaxxed`: Vaccination status.
-    - `viral_age`: Tracks viral mutations/passage.
-    - `immunity_level`: Adaptive immunity gained from recovery.
+The disease process is **SEIRD** (Susceptible, Exposed/Infected, Recovered,
+Dead) over a grid population whose agents can migrate across nodes of an
+Erdős–Rényi network. Agents differ in vulnerability (`high`/`low`), vaccination
+status, viral age, and adaptive immunity.
 
-### Optimization
-- status: active
-- type: documentation
-<!-- content -->
-The project uses **Bayesian Optimization** (via `Run_Simulations_Final.ipynb`) to explore the parameter space and identify optimal strategies that minimize infections and deaths.
+## Repository map
 
-### Precautionary Principle Analysis
-- status: active
-- type: documentation
-<!-- content -->
-A specialized notebook, `Precautionary_Principle_Analysis.ipynb`, is available to study the **Precautionary Principle**. It performs two separate parameter searches to identify the **worst-case death scenarios** for "Vaccinate All" vs. "Vaccinate Vulnerable Only" strategies, allowing for a minimax analysis of the results.
+This is a research repository organized as independent **strands** that share a
+common simulation engine (`src/`). The unit of progress is the figure or the
+claim, not the feature.
 
-## Usage
-- status: active
-- type: documentation
-<!-- content -->
+| Path | What it holds |
+|:--|:--|
+| `src/` | Shared simulation engine — agents, simulations, common imports. Notebooks orchestrate; modules define. |
+| `01_optimization/` | Bayesian-optimization search over the parameter space for harmful-vaccination regions. |
+| `02_precautionary/` | Worst-case (minimax) precautionary-principle analysis and its plots. |
+| `03_validation/` | Sanity-check notebooks for the simulation dynamics (single grid + network). |
+| `tests/` | Automated smoke tests for the engine (pytest). |
+| `results/` | Generated figures and data CSVs, with `MANIFEST.md` mapping each artifact to its source notebook. |
+| `notes/` | Paper outline, drafts, and conceptual notes. |
+| `archive/` | Superseded notebooks and one-off scripts kept for provenance. |
 
-### Dependencies
-- Python 3.x
-- `numpy`, `matplotlib`, `pandas`, `seaborn`, `networkx`, `tqdm`, `jupyter`, `scikit-optimize`
+### The engine (`src/`)
 
-### Running the Simulation
-1.  Open `Run_Simulations_Final.ipynb` in Jupyter Notebook.
-2.  The simulation is now consolidated into a single notebook that includes seeding for reproducibility.
-3.  Execute the cells to run the simulation and optimization routines.
-4.  Process results are visualized using `matplotlib` and saved as CSVs (e.g., `bo_results_fixed_params_seeding.csv`).
+- `simulation_class.py` — `Simulation` (single isolated grid), `Simulation2`
+  (network of grid nodes with agent migration), `Simulation3` (heterogeneous
+  grid sizes / densities per node).
+- `agent_class.py` — `FullAgent`, `FullAgent2`: per-agent health state (`S`/`I`/`R`/`D`),
+  `vul_type`, `vaxxed`, `viral_age`, `immunity_level`, `infection_count`.
+- `imports.py` — shared third-party imports and the state/color mappings used
+  for grid visualization.
 
-## Simulation Metrics
-- status: active
-- type: documentation
-<!-- content -->
-The simulation report now returns a 14-element vector containing key epidemiological metrics:
-1.  **Step**: The final simulation step.
-2.  **Max Deaths Proportion**: Peak proportion of deaths.
-3.  **Max Infected**: Peak proportion of infected agents.
-4.  **AUC Infected**: Area Under the Curve of infection over time.
-5.  **Avg Viral Age**: Average age of the virus genome (indicating mutation).
-6.  **Avg Immunity**: Average immunity level of the population.
-7.  **Non-vulnerable Dead Prop**: Proportion of non-vulnerable agents who died.
-8.  **Vulnerable Dead Prop**: Proportion of vulnerable agents who died.
-9.  **Seed**: Random seed used for the simulation.
-10. **Total Unique Infected**: Count of unique agents infected at least once.
-11. **Total Infections**: Total count of infection events (including reinfections).
-12. **Vul Infections**: Total infections among vulnerable agents.
-13. **Non-vul Infections**: Total infections among non-vulnerable agents.
-14. **Avg Reinfections**: Average number of times an agent was reinfected.
+## Setup
+
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Then launch Jupyter from the repo root and open a notebook in any strand
+folder. Each notebook's first cell puts `src/` on the path, so the
+`from imports import *` / `from agent_class import …` imports resolve
+regardless of which strand folder it lives in.
+
+## Running
+
+- **Optimization:** `01_optimization/Run_Simulations_Final.ipynb` runs Bayesian
+  optimization over the parameter space and writes results + figures to
+  `results/`.
+- **Precautionary analysis:** `02_precautionary/Precautionary_Principle_Analysis.ipynb`
+  runs two separate searches for the worst-case death proportion under each
+  strategy; `plots.ipynb` renders the convergence/comparison figures from the
+  saved iteration CSVs.
+- **Validation:** the `03_validation/` notebooks exercise the dynamics directly.
+
+All notebooks write artifacts to `../results/`. See `results/MANIFEST.md` for
+the figure → notebook mapping.
+
+## Tests
+
+Engine smoke tests live in `tests/` and run with [pytest](https://pytest.org):
+
+```bash
+pip install pytest
+pytest
+```
+
+They confirm the engine imports cleanly and that a small simulation runs and
+returns a well-formed 14-element report vector. For notebooks, the honest
+equivalent of a test suite is the `Restart-and-Run-All` check described in
+`HOUSEKEEPING.md`.
+
+## Simulation metrics
+
+`generate_simulation_report` returns a 14-element vector: step, max death
+proportion, max infected, AUC infected, average viral age, average immunity,
+non-vulnerable dead proportion, vulnerable dead proportion, seed, total unique
+infected, total infections, vulnerable infections, non-vulnerable infections,
+and average reinfections.
+
+## Repository governance
+
+- `HOUSEKEEPING.md` — periodic repo audit checklist.
+- `TODO_WORKFLOW.md` — cross-session task backlog.
+- `worklog.jsonl` — append-only session history.
+- `LICENSE` — MIT.
+
+## License
+
+MIT — see `LICENSE`.

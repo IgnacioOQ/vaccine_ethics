@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__cp_mcp__cp_mcp_session_start",
+      "mcp__cp_mcp__cp_mcp_task_list",
+      "mcp__cp_mcp__cp_mcp_task_add",
+      "mcp__cp_mcp__cp_mcp_task_close",
+      "mcp__cp_mcp__cp_mcp_worklog_append",
+      "mcp__cp_mcp__cp_mcp_session_end"
+    ]
+  }
+}

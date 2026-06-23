@@ -1,0 +1,14 @@
+# Core dependencies for the vaccine_ethics agent-based simulation.
+# Install:  pip install -r requirements.txt
+numpy
+scipy
+pandas
+matplotlib
+seaborn
+networkx
+tqdm
+joblib
+pytz
+scikit-optimize
+jupyter
+ipython
