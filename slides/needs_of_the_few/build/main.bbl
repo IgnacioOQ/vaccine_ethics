@@ -1,0 +1,715 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{Hoven2012}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=11c0c8bf95ce06add460d8c757d05228}{%
+           family={Hoven},
+           familyi={H\bibinitperiod},
+           given={Mariëtte},
+           giveni={M\bibinitperiod},
+           prefix={van\bibnamedelima den},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+      }
+      \strng{namehash}{11c0c8bf95ce06add460d8c757d05228}
+      \strng{fullhash}{11c0c8bf95ce06add460d8c757d05228}
+      \strng{fullhashraw}{11c0c8bf95ce06add460d8c757d05228}
+      \strng{bibnamehash}{11c0c8bf95ce06add460d8c757d05228}
+      \strng{authorbibnamehash}{11c0c8bf95ce06add460d8c757d05228}
+      \strng{authornamehash}{11c0c8bf95ce06add460d8c757d05228}
+      \strng{authorfullhash}{11c0c8bf95ce06add460d8c757d05228}
+      \strng{authorfullhashraw}{11c0c8bf95ce06add460d8c757d05228}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Public Health Ethics}
+      \field{number}{2}
+      \field{title}{{Why One Should Do One's Bit: Thinking about Free Riding in the Context of Public Health Ethics}}
+      \field{volume}{5}
+      \field{year}{2012}
+      \field{pages}{154\bibrangedash 160}
+      \range{pages}{7}
+      \verb{file}
+      \verb :VanDenHoven2012 Why One Should Do One.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/phe/phs023
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1093/phe/phs023
+      \endverb
+    \endentry
+    \entry{Giubilini2018}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=d284d0c24a1e7d5da8b2082876199166}{%
+           family={Giubilini},
+           familyi={G\bibinitperiod},
+           given={Alberto},
+           giveni={A\bibinitperiod}}}%
+        {{hash=eec66c8353eeeb4f8ffdeda159d23089}{%
+           family={Douglas},
+           familyi={D\bibinitperiod},
+           given={Thomas},
+           giveni={T\bibinitperiod}}}%
+        {{hash=a6d280752d0403b5d94021d2e557dc83}{%
+           family={Savulescu},
+           familyi={S\bibinitperiod},
+           given={Julian},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{a5f88b22c984547063873a4b3c2edc71}
+      \strng{fullhash}{a5f88b22c984547063873a4b3c2edc71}
+      \strng{fullhashraw}{a5f88b22c984547063873a4b3c2edc71}
+      \strng{bibnamehash}{a5f88b22c984547063873a4b3c2edc71}
+      \strng{authorbibnamehash}{a5f88b22c984547063873a4b3c2edc71}
+      \strng{authornamehash}{a5f88b22c984547063873a4b3c2edc71}
+      \strng{authorfullhash}{a5f88b22c984547063873a4b3c2edc71}
+      \strng{authorfullhashraw}{a5f88b22c984547063873a4b3c2edc71}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Medicine, Health Care and Philosophy}
+      \field{number}{4}
+      \field{title}{The moral obligation to be vaccinated: utilitarianism, contractualism, and collective easy rescue}
+      \field{volume}{21}
+      \field{year}{2018}
+      \field{pages}{547\bibrangedash 560}
+      \range{pages}{14}
+      \verb{file}
+      \verb :Guibilini2018 The moral obligation to be vaccinated.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s11019-018-9829-y
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s11019-018-9829-y
+      \endverb
+    \endentry
+    \entry{Rouzine2023}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=8238db474493c41638e6517b4cec1530}{%
+           family={Rouzine},
+           familyi={R\bibinitperiod},
+           given={Igor\bibnamedelima M.},
+           giveni={I\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=9a3cb21a4d9b9850d9080a1544cd1381}{%
+           family={Rozhnova},
+           familyi={R\bibinitperiod},
+           given={Ganna},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{6198e39cc52cab203016d6351a824f88}
+      \strng{fullhash}{6198e39cc52cab203016d6351a824f88}
+      \strng{fullhashraw}{6198e39cc52cab203016d6351a824f88}
+      \strng{bibnamehash}{6198e39cc52cab203016d6351a824f88}
+      \strng{authorbibnamehash}{6198e39cc52cab203016d6351a824f88}
+      \strng{authornamehash}{6198e39cc52cab203016d6351a824f88}
+      \strng{authorfullhash}{6198e39cc52cab203016d6351a824f88}
+      \strng{authorfullhashraw}{6198e39cc52cab203016d6351a824f88}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Communications Medicine}
+      \field{number}{1}
+      \field{title}{{Evolutionary implications of SARS-CoV-2 vaccination for the future design of vaccination strategies}}
+      \field{volume}{3}
+      \field{year}{2023}
+      \verb{file}
+      \verb :Rouzine2023 Evolutionary implications of SARSCoV2.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1038/s43856-023-00320-x
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1038/s43856-023-00320-x
+      \endverb
+    \endentry
+    \entry{Biswas2021}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=e487564f8b4eee39f67152c48343f684}{%
+           family={Biswas},
+           familyi={B\bibinitperiod},
+           given={Mohitosh},
+           giveni={M\bibinitperiod}}}%
+        {{hash=23ab4db427657eb20cbd9f9df3e36bea}{%
+           family={Rahaman},
+           familyi={R\bibinitperiod},
+           given={Shawonur},
+           giveni={S\bibinitperiod}}}%
+        {{hash=cc02960c41bacdfc5d32aeae134037ba}{%
+           family={Biswas},
+           familyi={B\bibinitperiod},
+           given={Tapash\bibnamedelima Kumar},
+           giveni={T\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=fc360600a0b1ee262528e3a82134895b}{%
+           family={Haque},
+           familyi={H\bibinitperiod},
+           given={Zahirul},
+           giveni={Z\bibinitperiod}}}%
+        {{hash=7488aa0db0a2f365c92349b000b6863c}{%
+           family={Ibrahim},
+           familyi={I\bibinitperiod},
+           given={Baharudin},
+           giveni={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{0ad0d67451f08f773e8e8b26a7390cd6}
+      \strng{fullhash}{84c91ec85a7a357c69f903837d61e9d7}
+      \strng{fullhashraw}{84c91ec85a7a357c69f903837d61e9d7}
+      \strng{bibnamehash}{0ad0d67451f08f773e8e8b26a7390cd6}
+      \strng{authorbibnamehash}{0ad0d67451f08f773e8e8b26a7390cd6}
+      \strng{authornamehash}{0ad0d67451f08f773e8e8b26a7390cd6}
+      \strng{authorfullhash}{84c91ec85a7a357c69f903837d61e9d7}
+      \strng{authorfullhashraw}{84c91ec85a7a357c69f903837d61e9d7}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Intervirology}
+      \field{number}{1}
+      \field{title}{{Association of Sex, Age, and Comorbidities with Mortality in COVID-19 Patients: A Systematic Review and Meta-Analysis}}
+      \field{volume}{64}
+      \field{year}{2021}
+      \field{pages}{36\bibrangedash 47}
+      \range{pages}{12}
+      \verb{file}
+      \verb :Biswas2021 Association of SexAge and Comorbidities with Mortality in COVID19 Patients.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1159/000512592
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1159/000512592
+      \endverb
+    \endentry
+    \entry{Hall2021}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=fe9007090e7519dd31733527245ef8a1}{%
+           family={{VJ Hall, J Victoria, S. Foulkes et al. and the SIREN Study Group}},
+           familyi={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{fe9007090e7519dd31733527245ef8a1}
+      \strng{fullhash}{fe9007090e7519dd31733527245ef8a1}
+      \strng{fullhashraw}{fe9007090e7519dd31733527245ef8a1}
+      \strng{bibnamehash}{fe9007090e7519dd31733527245ef8a1}
+      \strng{authorbibnamehash}{fe9007090e7519dd31733527245ef8a1}
+      \strng{authornamehash}{fe9007090e7519dd31733527245ef8a1}
+      \strng{authorfullhash}{fe9007090e7519dd31733527245ef8a1}
+      \strng{authorfullhashraw}{fe9007090e7519dd31733527245ef8a1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The Lancet}
+      \field{number}{10283}
+      \field{title}{{SARS-CoV-2 infection rates of antibody-positive compared with antibody-negative health-care workers in England: a large, multicentre, prospective cohort study (SIREN)}}
+      \field{volume}{397}
+      \field{year}{2021}
+      \field{pages}{1459\bibrangedash 1469}
+      \range{pages}{11}
+      \verb{file}
+      \verb :Hall2021 SARSCoV2 infection rates of antibody-positive compared.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/s0140-6736(21)00675-9
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/s0140-6736(21)00675-9
+      \endverb
+    \endentry
+    \entry{Altmann2022}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=940735b035e8f67a5d067f884601557e}{%
+           family={Altmann},
+           familyi={A\bibinitperiod},
+           given={Daniel\bibnamedelima M.},
+           giveni={D\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=c72de1c213e52f76b47daae4e72ccc66}{%
+           family={Boyton},
+           familyi={B\bibinitperiod},
+           given={Rosemary\bibnamedelima J.},
+           giveni={R\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{f4fb5c17e4c9cf8c67eb6981c0b9789d}
+      \strng{fullhash}{f4fb5c17e4c9cf8c67eb6981c0b9789d}
+      \strng{fullhashraw}{f4fb5c17e4c9cf8c67eb6981c0b9789d}
+      \strng{bibnamehash}{f4fb5c17e4c9cf8c67eb6981c0b9789d}
+      \strng{authorbibnamehash}{f4fb5c17e4c9cf8c67eb6981c0b9789d}
+      \strng{authornamehash}{f4fb5c17e4c9cf8c67eb6981c0b9789d}
+      \strng{authorfullhash}{f4fb5c17e4c9cf8c67eb6981c0b9789d}
+      \strng{authorfullhashraw}{f4fb5c17e4c9cf8c67eb6981c0b9789d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Science}
+      \field{number}{6585}
+      \field{title}{{COVID-19 vaccination: The road ahead}}
+      \field{volume}{375}
+      \field{year}{2022}
+      \field{pages}{1127\bibrangedash 1132}
+      \range{pages}{6}
+      \verb{file}
+      \verb :Altman2022 COVID-19 vaccination The road ahead.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1126/science.abn1755
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1126/science.abn1755
+      \endverb
+    \endentry
+    \entry{Kun2023}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=2ce07a70f8081915eef07d1534881f94}{%
+           family={Kun},
+           familyi={K\bibinitperiod},
+           given={Ádám},
+           giveni={Á\bibinitperiod}}}%
+        {{hash=c60da5e0b5f029c6d6d53c4fd463f82f}{%
+           family={Hubai},
+           familyi={H\bibinitperiod},
+           given={András\bibnamedelima G.},
+           giveni={A\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=dc552730c15b5ed775bde5881c514e03}{%
+           family={Král},
+           familyi={K\bibinitperiod},
+           given={Adrienn},
+           giveni={A\bibinitperiod}}}%
+        {{hash=bbb2d7bf3c8a0718030dc07e6c1cf83e}{%
+           family={Mokos},
+           familyi={M\bibinitperiod},
+           given={Judit},
+           giveni={J\bibinitperiod}}}%
+        {{hash=2b4ed78f77af1e1821250ea9cb54633a}{%
+           family={Mikulecz},
+           familyi={M\bibinitperiod},
+           given={Benjámin\bibnamedelima Áron},
+           giveni={B\bibinitperiod\bibinitdelim Á\bibinitperiod}}}%
+        {{hash=4bcb7be2268f39582a367c5e906cc07e}{%
+           family={Radványi},
+           familyi={R\bibinitperiod},
+           given={ÁdÁm},
+           giveni={Á\bibinitperiod}}}%
+      }
+      \strng{namehash}{8c72c12dc8d09da10603d41d16582fe7}
+      \strng{fullhash}{62fafd6cea5c7dd47a6ad5055745ff1d}
+      \strng{fullhashraw}{62fafd6cea5c7dd47a6ad5055745ff1d}
+      \strng{bibnamehash}{8c72c12dc8d09da10603d41d16582fe7}
+      \strng{authorbibnamehash}{8c72c12dc8d09da10603d41d16582fe7}
+      \strng{authornamehash}{8c72c12dc8d09da10603d41d16582fe7}
+      \strng{authorfullhash}{62fafd6cea5c7dd47a6ad5055745ff1d}
+      \strng{authorfullhashraw}{62fafd6cea5c7dd47a6ad5055745ff1d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Biologia Futura}
+      \field{number}{1–2}
+      \field{title}{{Do pathogens always evolve to be less virulent? The virulence–transmission trade-off in light of the COVID-19 pandemic}}
+      \field{volume}{74}
+      \field{year}{2023}
+      \field{pages}{69\bibrangedash 80}
+      \range{pages}{12}
+      \verb{file}
+      \verb :Kun2023 Do pathogens always evolve to be less virulent.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1007/s42977-023-00159-2
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1007/s42977-023-00159-2
+      \endverb
+    \endentry
+    \entry{head_scikit_optimize_2021}{software}{}{}
+      \name{author}{5}{}{%
+        {{hash=7ef034179ad2abfae3c405360b87c89b}{%
+           family={Head},
+           familyi={H\bibinitperiod},
+           given={Tim},
+           giveni={T\bibinitperiod}}}%
+        {{hash=939a07ef95f263a77489acec648a3070}{%
+           family={Kumar},
+           familyi={K\bibinitperiod},
+           given={Manoj},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3d1b1c17aebddde1a39c1c3ea6b62dee}{%
+           family={Nahrstaedt},
+           familyi={N\bibinitperiod},
+           given={Holger},
+           giveni={H\bibinitperiod}}}%
+        {{hash=832b9967410c05c324eec6e9b19da71e}{%
+           family={Louppe},
+           familyi={L\bibinitperiod},
+           given={Gilles},
+           giveni={G\bibinitperiod}}}%
+        {{hash=afe8433706ffad7b71c47ae62ab682cf}{%
+           family={Shcherbatyi},
+           familyi={S\bibinitperiod},
+           given={Iaroslav},
+           giveni={I\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Zenodo}%
+      }
+      \strng{namehash}{149cc1cc519308cf41f5b6ce0996019c}
+      \strng{fullhash}{ed169e9c5d25f7306c5104112e6fded9}
+      \strng{fullhashraw}{ed169e9c5d25f7306c5104112e6fded9}
+      \strng{bibnamehash}{149cc1cc519308cf41f5b6ce0996019c}
+      \strng{authorbibnamehash}{149cc1cc519308cf41f5b6ce0996019c}
+      \strng{authornamehash}{149cc1cc519308cf41f5b6ce0996019c}
+      \strng{authorfullhash}{ed169e9c5d25f7306c5104112e6fded9}
+      \strng{authorfullhashraw}{ed169e9c5d25f7306c5104112e6fded9}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{scikit-optimize/scikit-optimize}
+      \field{version}{v0.9.0}
+      \field{year}{2021}
+      \verb{doi}
+      \verb 10.5281/zenodo.5565057
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.5281/zenodo.5565057
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.5281/zenodo.5565057
+      \endverb
+    \endentry
+    \entry{Luyten2011}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=476b654934a741628d9eb5397cc529ac}{%
+           family={Luyten},
+           familyi={L\bibinitperiod},
+           given={J.},
+           giveni={J\bibinitperiod}}}%
+        {{hash=47735232094b3b46699ec6f66014ec76}{%
+           family={Vandevelde},
+           familyi={V\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=65dd2ac890311f33d489240c5521dbdb}{%
+           family={Van\bibnamedelima Damme},
+           familyi={V\bibinitperiod\bibinitdelim D\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+        {{hash=24e596ba421ab52c4f899f1ab61c3708}{%
+           family={Beutels},
+           familyi={B\bibinitperiod},
+           given={P.},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{8c2a9dfb955c92931ee32cdf6508d560}
+      \strng{fullhash}{1c10c92df99274ee4a9ea8234cec3fd5}
+      \strng{fullhashraw}{1c10c92df99274ee4a9ea8234cec3fd5}
+      \strng{bibnamehash}{8c2a9dfb955c92931ee32cdf6508d560}
+      \strng{authorbibnamehash}{8c2a9dfb955c92931ee32cdf6508d560}
+      \strng{authornamehash}{8c2a9dfb955c92931ee32cdf6508d560}
+      \strng{authorfullhash}{1c10c92df99274ee4a9ea8234cec3fd5}
+      \strng{authorfullhashraw}{1c10c92df99274ee4a9ea8234cec3fd5}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Public Health Ethics}
+      \field{number}{3}
+      \field{title}{{Vaccination Policy and Ethical Challenges Posed by Herd Immunity, Suboptimal Uptake and Subgroup Targeting}}
+      \field{volume}{4}
+      \field{year}{2011}
+      \field{pages}{280\bibrangedash 291}
+      \range{pages}{12}
+      \verb{file}
+      \verb :Luyten2011 Vaccination Policy and Ethical Challenges.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1093/phe/phr032
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1093/phe/phr032
+      \endverb
+    \endentry
+    \entry{Read2015}{misc}{}{}
+      \name{author}{9}{}{%
+        {{hash=b81f0a0e33e63f8373f8d55af6d56ee6}{%
+           family={Read},
+           familyi={R\bibinitperiod},
+           given={Andrew\bibnamedelima F.},
+           giveni={A\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=a0fbe990d1dba1a1adf63da9d8ae9f34}{%
+           family={Baigent},
+           familyi={B\bibinitperiod},
+           given={Susan\bibnamedelima J.},
+           giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=5deeb5e151da806c38478a67aecf9615}{%
+           family={Powers},
+           familyi={P\bibinitperiod},
+           given={Claire},
+           giveni={C\bibinitperiod}}}%
+        {{hash=798ba367ebb46bb614a01a8927411e51}{%
+           family={Kgosana},
+           familyi={K\bibinitperiod},
+           given={Lydia\bibnamedelima B.},
+           giveni={L\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=6d178ebc375fbdc01caa6cef7e92a153}{%
+           family={Blackwell},
+           familyi={B\bibinitperiod},
+           given={Luke},
+           giveni={L\bibinitperiod}}}%
+        {{hash=1c8ffc170394d73c2e400b42a6a01eb2}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Lorraine\bibnamedelima P.},
+           giveni={L\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=1f6ab994193c66b3a85373154a835287}{%
+           family={Kennedy},
+           familyi={K\bibinitperiod},
+           given={David\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=099271903f928074a240685c78b96193}{%
+           family={Walkden-Brown},
+           familyi={W\bibinithyphendelim B\bibinitperiod},
+           given={Stephen\bibnamedelima W.},
+           giveni={S\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+        {{hash=c42cb8d9ad8e2f0b2d17274c81df5ab7}{%
+           family={Nair},
+           familyi={N\bibinitperiod},
+           given={Venugopal\bibnamedelima K.},
+           giveni={V\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{94d3f52a3eb62d3ccc6f33c363dbd938}
+      \strng{fullhash}{ee9af73e60fa10380d8c3930ff7eca9c}
+      \strng{fullhashraw}{ee9af73e60fa10380d8c3930ff7eca9c}
+      \strng{bibnamehash}{94d3f52a3eb62d3ccc6f33c363dbd938}
+      \strng{authorbibnamehash}{94d3f52a3eb62d3ccc6f33c363dbd938}
+      \strng{authornamehash}{94d3f52a3eb62d3ccc6f33c363dbd938}
+      \strng{authorfullhash}{ee9af73e60fa10380d8c3930ff7eca9c}
+      \strng{authorfullhashraw}{ee9af73e60fa10380d8c3930ff7eca9c}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{PLOS Biology}
+      \field{title}{Data from: Imperfect vaccination can enhance the transmission of highly virulent pathogens}
+      \field{year}{2015}
+      \verb{file}
+      \verb :Read2015 Imperfect Vaccination Can Enhance the Transmission of Highly Virulent Pathogens.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.5061/dryad.4tn48
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.5061/dryad.4tn48
+      \endverb
+      \keyw{Poultry,chicken,Marek's disease virus,transmission,Virulence,Marek's disease,Holocene,hypoerpathogenic}
+    \endentry
+    \entry{Hanquet2022}{article}{}{}
+      \name{author}{30}{}{%
+        {{hash=7555f44909610b114d362c851b2d971d}{%
+           family={Hanquet},
+           familyi={H\bibinitperiod},
+           given={Germaine},
+           giveni={G\bibinitperiod}}}%
+        {{hash=e0d17f334032d840173188ad640043cc}{%
+           family={Krizova},
+           familyi={K\bibinitperiod},
+           given={Pavla},
+           giveni={P\bibinitperiod}}}%
+        {{hash=348e7a0c107143158e80c38ad7c71b01}{%
+           family={Dalby},
+           familyi={D\bibinitperiod},
+           given={Tina},
+           giveni={T\bibinitperiod}}}%
+        {{hash=dd9d312e8b8739f9eb301e048b4f9025}{%
+           family={Ladhani},
+           familyi={L\bibinitperiod},
+           given={Shamez\bibnamedelima N.},
+           giveni={S\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+        {{hash=4e771e373e4dab966b2c216b776ed82e}{%
+           family={Nuorti},
+           familyi={N\bibinitperiod},
+           given={J.\bibnamedelimi Pekka},
+           giveni={J\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+        {{hash=542a441d7cd037f9662f76347151fb2a}{%
+           family={Danis},
+           familyi={D\bibinitperiod},
+           given={Kostas},
+           giveni={K\bibinitperiod}}}%
+        {{hash=8e9e3e8ba632c545cf5e9756ce1ac4a0}{%
+           family={Mereckiene},
+           familyi={M\bibinitperiod},
+           given={Jolita},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9c784c54dbcf1defbeacd6fec042f700}{%
+           family={Knol},
+           familyi={K\bibinitperiod},
+           given={Mirjam\bibnamedelima J.},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=d2e92f10712284feaab7e4cd6170c44c}{%
+           family={Winje},
+           familyi={W\bibinitperiod},
+           given={Brita\bibnamedelima A.},
+           giveni={B\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=ae48847393e8328c39da4562c731f2ef}{%
+           family={Ciruela},
+           familyi={C\bibinitperiod},
+           given={Pilar},
+           giveni={P\bibinitperiod}}}%
+        {{hash=c259af6736463dc8002813e78b1b129d}{%
+           family={Miguel},
+           familyi={M\bibinitperiod},
+           given={Sara},
+           giveni={S\bibinitperiod},
+           prefix={de},
+           prefixi={d\bibinitperiod}}}%
+        {{hash=74f2241aaaeee98fa0bae40c1955dbe8}{%
+           family={Portillo},
+           familyi={P\bibinitperiod},
+           given={Maria\bibnamedelima Eugenia},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=28e42c1829b39bdb33c67dd758d616cb}{%
+           family={MacDonald},
+           familyi={M\bibinitperiod},
+           given={Laura},
+           giveni={L\bibinitperiod}}}%
+        {{hash=93184e503ead367473f15247927f25ea}{%
+           family={Morfeldt},
+           familyi={M\bibinitperiod},
+           given={Eva},
+           giveni={E\bibinitperiod}}}%
+        {{hash=db6d0391ecae845b7257e518cd490390}{%
+           family={Kozakova},
+           familyi={K\bibinitperiod},
+           given={Jana},
+           giveni={J\bibinitperiod}}}%
+        {{hash=917b97873e33469265dda17241d223c6}{%
+           family={Valentiner-Branth},
+           familyi={V\bibinithyphendelim B\bibinitperiod},
+           given={Palle},
+           giveni={P\bibinitperiod}}}%
+        {{hash=665e3c94624fb4a4258f3ffc91bab5ac}{%
+           family={Fry},
+           familyi={F\bibinitperiod},
+           given={Norman\bibnamedelima K.},
+           giveni={N\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=a0f6ec0b10501132773ead93b4cd1461}{%
+           family={Rinta-Kokko},
+           familyi={R\bibinithyphendelim K\bibinitperiod},
+           given={Hanna},
+           giveni={H\bibinitperiod}}}%
+        {{hash=581ffdab07f52489b504edbb0555c5a1}{%
+           family={Varon},
+           familyi={V\bibinitperiod},
+           given={Emmanuelle},
+           giveni={E\bibinitperiod}}}%
+        {{hash=deee6cbac293783c69c3019c13bb042f}{%
+           family={Corcoran},
+           familyi={C\bibinitperiod},
+           given={Mary},
+           giveni={M\bibinitperiod}}}%
+        {{hash=ad8691df73a913ef0e3c7439b054e036}{%
+           family={Ende},
+           familyi={E\bibinitperiod},
+           given={Arie},
+           giveni={A\bibinitperiod},
+           prefix={van\bibnamedelima der},
+           prefixi={v\bibinitperiod\bibinitdelim d\bibinitperiod}}}%
+        {{hash=4c982ee4fbf530b3b372baff0fa249fc}{%
+           family={Vestrheim},
+           familyi={V\bibinitperiod},
+           given={Didrik\bibnamedelima F.},
+           giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod}}}%
+        {{hash=b6fd04be77e1f0fda7e8a9fa161069e4}{%
+           family={Munoz-Almagro},
+           familyi={M\bibinithyphendelim A\bibinitperiod},
+           given={Carmen},
+           giveni={C\bibinitperiod}}}%
+        {{hash=dcaa01f13d7b855a32be755dff57ed83}{%
+           family={Sanz},
+           familyi={S\bibinitperiod},
+           given={Juan-Carlos},
+           giveni={J\bibinithyphendelim C\bibinitperiod}}}%
+        {{hash=ea3fb7d6459757a37da9ddb9b3f29eb2}{%
+           family={Castilla},
+           familyi={C\bibinitperiod},
+           given={Jesus},
+           giveni={J\bibinitperiod}}}%
+        {{hash=56a71a9efbc344f169ac1454c9e7af49}{%
+           family={Smith},
+           familyi={S\bibinitperiod},
+           given={Andrew},
+           giveni={A\bibinitperiod}}}%
+        {{hash=eaebf67452d437390221c14bece337bc}{%
+           family={Henriques-Normark},
+           familyi={H\bibinithyphendelim N\bibinitperiod},
+           given={Birgitta},
+           giveni={B\bibinitperiod}}}%
+        {{hash=55d6d53c635fd4b6f1d4824f0ce54c44}{%
+           family={Colzani},
+           familyi={C\bibinitperiod},
+           given={Edoardo},
+           giveni={E\bibinitperiod}}}%
+        {{hash=078829d090d0ef40f7750d0ef0881f42}{%
+           family={Pastore-Celentano},
+           familyi={P\bibinithyphendelim C\bibinitperiod},
+           given={Lucia},
+           giveni={L\bibinitperiod}}}%
+        {{hash=09597ab576000aca4d381604a3ca046c}{%
+           family={Savulescu},
+           familyi={S\bibinitperiod},
+           given={Camelia},
+           giveni={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{444cebfc8127e5555977f8e577d3b07c}
+      \strng{fullhash}{9661766e996f490cf28468567138b702}
+      \strng{fullhashraw}{9661766e996f490cf28468567138b702}
+      \strng{bibnamehash}{444cebfc8127e5555977f8e577d3b07c}
+      \strng{authorbibnamehash}{444cebfc8127e5555977f8e577d3b07c}
+      \strng{authornamehash}{444cebfc8127e5555977f8e577d3b07c}
+      \strng{authorfullhash}{9661766e996f490cf28468567138b702}
+      \strng{authorfullhashraw}{9661766e996f490cf28468567138b702}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Emerging Infectious Diseases}
+      \field{number}{1}
+      \field{title}{Serotype Replacement after Introduction of 10-Valent and 13-Valent Pneumococcal Conjugate Vaccines in 10 Countries, Europe}
+      \field{volume}{28}
+      \field{year}{2022}
+      \field{pages}{137\bibrangedash 138}
+      \range{pages}{2}
+      \verb{file}
+      \verb :Hanqet2022 Serotype Replacement after.pdf:PDF
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.3201/eid2801.210734
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.3201/eid2801.210734
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

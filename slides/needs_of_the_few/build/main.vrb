@@ -1,0 +1,16 @@
+\frametitle{Appendix --- Death probability update}
+\begin{lstlisting}[language=Python]
+if self.vaxxed:
+    base_death_prob = self.death_prob * (1 - self.vax_effect)
+else:
+    base_death_prob = self.death_prob
+
+base_death_prob = max(
+    base_death_prob *
+    (1 - self.viral_age_effect * self.viral_age
+       - self.immune_adaptation_effect * self.immunity_level),
+    0)
+
+if self.rng.random() < base_death_prob:
+    self.state = 'D'
+\end{lstlisting}
