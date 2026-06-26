@@ -1515,4 +1515,92 @@ Overfull \hbox (8.53885pt too wide) in paragraph at lines 374--374
 [59
 
 ]
-Overfull \hbox (8.5
+Overfull \hbox (8.53885pt too wide) in paragraph at lines 374--374
+[]\T1/phv/b/sl/8 A ne-glected mech-a-nism: \T1/phv/m/n/8 the transmission-virulence trade-off (vi-ral age-ing) changes
+ []
+
+[60
+
+]
+Overfull \hbox (8.53885pt too wide) in paragraph at lines 374--374
+[]\T1/phv/b/sl/8 A ne-glected mech-a-nism: \T1/phv/m/n/8 the transmission-virulence trade-off (vi-ral age-ing) changes
+ []
+
+[61
+
+] [62
+
+] [63
+
+] [64
+
+]
+\openout4 = `main.vrb'.
+
+ (./main.vrb (/usr/local/texlive/2026/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2025/11/14 1.11b listings language file
+)) [65
+
+]
+<figures/example_plot.png, id=3072, 807.9786pt x 432.8973pt>
+File: figures/example_plot.png Graphic file (type png)
+<use figures/example_plot.png>
+Package pdftex.def Info: figures/example_plot.png  used on input line 429.
+(pdftex.def)             Requested size: 245.83282pt x 131.71312pt.
+ [66
+
+ <./figures/example_plot.png>] [67
+
+] [68
+
+
+]
+\tf@nav=\write7
+\openout7 = `main.nav'.
+
+\tf@toc=\write8
+\openout8 = `main.toc'.
+
+\tf@snm=\write9
+\openout9 = `main.snm'.
+
+ (./main.aux)
+ ***********
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-03-20>
+ ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+Package rerunfilecheck Warning: File `main.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `main.out':
+(rerunfilecheck)             Before: D7E63BE44EAAA939286D487598423347;697
+(rerunfilecheck)             After:  B90AA129563019846E0936496D205825;798.
+
+Package biblatex Warning: Please rerun LaTeX.
+
+Package logreq Info: Writing requests to 'main.run.xml'.
+\openout1 = `main.run.xml'.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 44777 strings out of 467349
+ 928597 string characters out of 5415635
+ 1888430 words of memory out of 5000000
+ 72934 multiletter control sequences out of 15000+600000
+ 686425 words of font info for 101 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 142i,20n,137p,1275b,2136s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2026/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on main.pdf (68 pages, 1015709 bytes).
+PDF statistics:
+ 3202 PDF objects out of 3580 (max. 8388607)
+ 2290 compressed objects within 23 object streams
+ 156 named destinations out of 1000 (max. 500000)
+ 327 words of extra memory for PDF output out of 10000 (max. 10000000)
+
