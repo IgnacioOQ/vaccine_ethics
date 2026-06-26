@@ -1,13 +1,13 @@
 # Fdb version 4
-["biber main"] 1782457104.3233 "main.bcf" "main.bbl" "main" 1782457143.93384 0
+["biber main"] 1782457104.3233 "main.bcf" "main.bbl" "main" 1782461318.56881 0
   "bibliography.bib" 1782245266.94292 31182 6ac7ecdae2e0fec6188ff10119bbb77c ""
-  "main.bcf" 1782457143.60586 110986 d4ece1fba24e3369194bdfd9141b08fa "pdflatex"
+  "main.bcf" 1782461318.15 110986 d4ece1fba24e3369194bdfd9141b08fa "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1782457131.82265 "/Users/ignacio/Documents/VS Code/GitHub Repositories/vaccine_ethics/slides/needs_of_the_few/main.tex" "main.pdf" "main" 1782457143.93425 0
-  "/Users/ignacio/Documents/VS Code/GitHub Repositories/vaccine_ethics/slides/needs_of_the_few/main.tex" 1782457097.22202 14435 e75d4620ca23eb4b9183122576d24b24 ""
+["pdflatex"] 1782461302.64487 "/Users/ignacio/Documents/VS Code/GitHub Repositories/vaccine_ethics/slides/needs_of_the_few/main.tex" "main.pdf" "main" 1782461318.56951 0
+  "/Users/ignacio/Documents/VS Code/GitHub Repositories/vaccine_ethics/slides/needs_of_the_few/main.tex" 1782461287.4288 14545 b4106cc16a1a03eba6078596410b03e5 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2026/texmf-dist/fonts/tfm/adobe/courier/pcrb8r.tfm" 1136768653 1292 3059476c50a24578715759f22652f3d0 ""
@@ -316,14 +316,14 @@
   "figures/vax_hurts.png" 1782245266.93019 186596 9bc10c120724b7ea644c4bd87c901dd4 ""
   "figures/vul_vs_nonvul.png" 1782245266.93349 87705 96f9fc4cb4eac46df5ba7af3665dc78c ""
   "if-beamer.cls" 1782245331.80444 9938 2c63d7035d1ce7c16ea8d9b5863235d2 ""
-  "main.aux" 1782457143.59906 10693 6b034d1889ea90366f06204a0aa62d7f "pdflatex"
+  "main.aux" 1782461318.14184 10693 cd6db1ca12591043f500bad628d36937 "pdflatex"
   "main.bbl" 1782457108.44912 28950 04547eb416ee24b37a601bc8130e7c65 "biber main"
-  "main.nav" 1782457143.60772 4340 ab07e8a06fe802cce70abe5032a514d2 "pdflatex"
-  "main.out" 1782457143.60399 798 b90aa129563019846e0936496d205825 "pdflatex"
-  "main.run.xml" 1782457143.6073 2340 a754b97e73f68fc2a7779aef4b22c99c "pdflatex"
-  "main.tex" 1782457097.22202 14435 e75d4620ca23eb4b9183122576d24b24 ""
-  "main.toc" 1782457143.60786 320 03ba77256bd4d1b69629dcb2a7106f0c "pdflatex"
-  "main.vrb" 1782457142.89306 449 261ec7c6e31daaecc432e851bbe50192 "pdflatex"
+  "main.nav" 1782461318.1524 4340 e9ee57a2fcbc579d182b8029ecf55b02 "pdflatex"
+  "main.out" 1782461318.14786 798 b90aa129563019846e0936496d205825 "pdflatex"
+  "main.run.xml" 1782461318.15217 2340 a754b97e73f68fc2a7779aef4b22c99c "pdflatex"
+  "main.tex" 1782461287.4288 14545 b4106cc16a1a03eba6078596410b03e5 ""
+  "main.toc" 1782461318.1525 320 cb09e9a16161fd66b0783ca2e9319e68 "pdflatex"
+  "main.vrb" 1782461317.49451 449 261ec7c6e31daaecc432e851bbe50192 "pdflatex"
   (generated)
   "main.aux"
   "main.bcf"
