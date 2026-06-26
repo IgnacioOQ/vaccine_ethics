@@ -71,7 +71,7 @@
   \vfill
   \centering
   {\Large\itshape ``The needs of the many outweigh the needs of the few.''}\\[1em]
-  \normalsize --- Spock, \emph{The Wrath of Khan}
+  \normalsize Spock, \emph{The Wrath of Khan}
   \vfill
   \pause
   \centering
@@ -89,24 +89,26 @@
 \begin{frame}{The pro-vaccination consensus}
 \justifying
 
-Vaccination campaigns have had spectacular successes --- smallpox, polio, tetanus --- through \emph{herd immunity}.
+Vaccination campaigns have had spectacular successes (smallpox, polio, tetanus, COVID-19), also through \emph{herd immunity}.
 
 \strut
 \pause
 
-This success underwrote a strong ethical claim during COVID-19:
+This success underwrote a strong ethical claims during COVID-19:
 \begin{itemize}
-  \item vaccine refusal is \emph{free-riding} \autocite{Hoven2012,Giubilini2018};
-  \item mass vaccination would \emph{surely} improve public health.
+  \item Vaccine refusal is \emph{free-riding} \autocite{Hoven2012,Giubilini2018};
+  \item Mass vaccination would \emph{surely} improve public health.
 \end{itemize}
 
 \strut
+
 \pause
 \begin{quote}\small
 ``Transmission models were used to devise vaccination strategies and served as a basis for policymaking in many countries.'' \autocite[3]{Rouzine2023}
 \end{quote}
 
 \strut
+
 \pause
 \textbf{\textit{We examine the evidential basis for ``mass vaccination surely helps.''}}
 \end{frame}
@@ -117,11 +119,11 @@ This success underwrote a strong ethical claim during COVID-19:
 \begin{frame}{Our claim}
 \justifying
 
-There exist COVID-like regimes in which vaccinating \emph{only the vulnerable} produces \textbf{fewer total deaths} than vaccinating \emph{everyone} ---
+There exist viral regimes in which vaccinating \emph{only the vulnerable} produces \textbf{fewer total deaths} than vaccinating \emph{everyone},
+even when the vaccine is:
 
 \strut
-\pause
-\dots even when the vaccine is
+
 \begin{itemize}
   \item safe (no adverse reactions, no nocebo),
   \item freely available in unlimited quantity,
@@ -130,6 +132,7 @@ There exist COVID-like regimes in which vaccinating \emph{only the vulnerable} p
 \end{itemize}
 
 \strut
+
 \pause
 \begin{alertblock}{Two disclaimers, up front}
 This is \textbf{not} a claim about actual COVID-19, and \textbf{not} a policy recommendation. It is a \emph{constructive counterexample} in service of \emph{epistemic humility}.
@@ -142,24 +145,23 @@ This is \textbf{not} a claim about actual COVID-19, and \textbf{not} a policy re
 \begin{frame}{An agent-based SISD model}
 \justifying
 
-Agents on a $25\times25$ grid follow a random walk. Contact between an infected and a susceptible agent transmits the virus with some probability.
+Agents move by random walk on a $25\times25$ grid. When an infected and a susceptible agent meet, the virus is transmitted with some probability.
 
 \strut
-\begin{center}
-\resizebox{0.85\textwidth}{!}{%
-\begin{tikzpicture}[node distance=1.6cm and 2.2cm]
-  \node[block, fill=melon] (S) {\textbf{S}usceptible};
-  \node[block, right=of S] (I) {\textbf{I}nfected};
-  \node[block, fill=lightgray, above right=0.8cm and 1.8cm of I] (D) {\textbf{D}ead};
-  \path[line] (S) -- node[above]{infection} (I);
-  \path[line] (I) to[bend right=20] node[below]{recovery $+$ immunity} (S);
-  \path[line] (I) -- node[above right]{death} (D);
-\end{tikzpicture}}
-\end{center}
+\pause
+
+The acronym \textbf{SISD} names the states an agent moves through:
+\begin{itemize}
+  \item \textbf{S}usceptible: healthy, can be infected on contact.
+  \item \textbf{I}nfected: each step it either dies, recovers, or stays infected.
+  \item \textbf{S}usceptible again: a recovered agent returns to S, now carrying added \emph{immunity}.
+  \item \textbf{D}ead: an absorbing state.
+\end{itemize}
+
+\strut
 
 \pause
-\small
-Susceptible $\to$ Infected $\to$ \{recover (back to S, with immunity) \emph{or} die\}.
+In short: Susceptible $\to$ Infected $\to$ \{recover (back to S, with immunity) \emph{or} die\}.
 \end{frame}
 
 \begin{frame}{Four added features}
@@ -171,7 +173,7 @@ Susceptible $\to$ Infected $\to$ \{recover (back to S, with immunity) \emph{or} 
 \pause
   \item \textbf{Vaccination}: large reduction in infection probability, death probability, recovery time \autocite{Altmann2022}.
 \pause
-  \item \textbf{Viral age} --- the distinctive ingredient: lethality \emph{decreases} with each transmission (transmission--virulence trade-off).
+  \item \textbf{Viral age}, the distinctive ingredient: lethality \emph{decreases} with each transmission (transmission-virulence trade-off).
 \end{itemize}
 
 \strut
@@ -192,7 +194,7 @@ Susceptible $\to$ Infected $\to$ \{recover (back to S, with immunity) \emph{or} 
 \pause
 Qualitative working hypothesis:
 \begin{itemize}
-  \item Under S2 the virus circulates mostly among \emph{non-vulnerable, unvaccinated} agents --- who are unlikely to die.
+  \item Under S2 the virus circulates mostly among \emph{non-vulnerable, unvaccinated} agents, who are unlikely to die.
 \pause
   \item There it transmits often, so it \emph{ages and turns benign faster}.
 \pause
@@ -201,7 +203,7 @@ Qualitative working hypothesis:
 
 \strut
 \pause
-\textbf{\textit{So it is possible S2 yields fewer deaths --- but only simulation can tell.}}
+\textbf{\textit{So it is possible S2 yields fewer deaths, but only simulation can tell.}}
 \end{frame}
 
 % ===================================================================
@@ -221,7 +223,7 @@ We fix most parameters and vary three: \emph{viral ageing}, \emph{vaccination ef
 
 \strut
 \pause
-\textbf{\textit{Goal: not that such regimes are common --- but that they exist, and are spread out.}}
+\textbf{\textit{Goal: not that such regimes are common, but that they exist, and are spread out.}}
 \end{frame}
 
 \begin{frame}{S2 causes fewer deaths than S1}
@@ -235,7 +237,7 @@ We fix most parameters and vary three: \emph{viral ageing}, \emph{vaccination ef
 Two lessons:
 \begin{itemize}
   \item the advantage is \emph{small} (max $\sim$1\% of agents on average), and
-  \item the regions are \emph{scattered} --- no tidy rule for when S1 wins.
+  \item the regions are \emph{scattered}: no tidy rule for when S1 wins.
 \end{itemize}
 \end{frame}
 
@@ -247,12 +249,12 @@ To minimise \emph{total} deaths, it is sometimes best for the majority to \emph{
 \strut
 \pause
 \begin{alertblock}{Free-riding $\to$ public service}
-Foregoing vaccination lets the virus attenuate in a low-risk population --- a \emph{negative herd immunity} effect \autocite{Luyten2011} that benefits everyone. The ``free-rider'' is in fact taking on risk for the group.
+Foregoing vaccination lets the virus attenuate in a low-risk population, a \emph{negative herd immunity} effect \autocite{Luyten2011} that benefits everyone. The ``free-rider'' is in fact taking on risk for the group.
 \end{alertblock}
 
 \strut
 \pause
-At times, the needs of the few \emph{do} outweigh the needs of the many --- if measured by simple averaging.
+At times, the needs of the few \emph{do} outweigh the needs of the many, if measured by simple averaging.
 \end{frame}
 
 \begin{frame}{Beyond deaths: area under the curve}
@@ -279,7 +281,7 @@ $x$: S2 advantage for \emph{non-vulnerable}.\\
 $y$: S2 advantage for \emph{vulnerable}.
 \pause
 \\[0.8em]
-\textbf{Top-left ($x<0,\,y>0$):} the non-vulnerable majority \emph{sacrifices}, the vulnerable minority gains more --- net benefit overall.
+\textbf{Top-left ($x<0,\,y>0$):} the non-vulnerable majority \emph{sacrifices}, the vulnerable minority gains more: net benefit overall.
 \end{columns}
 \end{frame}
 
@@ -303,7 +305,7 @@ Searching \emph{independently} for the deadliest setting of each strategy: unive
 \begin{frame}{``Your model is just speculative''}
 \justifying
 
-Objection: established COVID models all favoured universal vaccination --- why trust this simpler one?
+Objection: established COVID models all favoured universal vaccination: why trust this simpler one?
 
 \strut
 \pause
@@ -319,14 +321,14 @@ Objection: established COVID models all favoured universal vaccination --- why t
 
 \strut
 \pause
-\small Historical precedent: Marek's disease \autocite{Read2015} and pneumococcal serotype replacement \autocite{Hanquet2022} --- vaccination with real negative evolutionary outcomes.
+\small Historical precedent: Marek's disease \autocite{Read2015} and pneumococcal serotype replacement \autocite{Hanquet2022}, vaccination with real negative evolutionary outcomes.
 \end{frame}
 
 \begin{frame}{Limits of ethical inference}
 \justifying
 What the model does \emph{not} settle:
 \begin{itemize}
-  \item It uses \emph{mortality only} --- ignoring morbidity, long COVID, liberty, economic cost, fairness.
+  \item It uses \emph{mortality only}, ignoring morbidity, long COVID, liberty, economic cost, fairness.
 \pause
   \item It targets \emph{population strategies}, not the morality of \emph{individual} acts.
 \pause
@@ -344,7 +346,7 @@ Even a coherent, empirically motivated model can leave the \emph{ethical} conclu
 \justifying
 
 \begin{itemize}
-  \item Our grasp of vaccination outcomes is --- in many situations --- \emph{too poor} to support strong moral verdicts either way.
+  \item Our grasp of vaccination outcomes is, in many situations, \emph{too poor} to support strong moral verdicts either way.
 \pause
   \item We should be cautious before labelling vaccine hesitancy as free-riding, a boon, or negligence.
 \pause
@@ -353,7 +355,7 @@ Even a coherent, empirically motivated model can leave the \emph{ethical} conclu
 
 \strut
 \pause
-\textbf{\textit{The remedy is epistemic humility + honest uncertainty communication --- itself a contribution to pandemic preparedness.}}
+\textbf{\textit{The remedy is epistemic humility and honest uncertainty communication, itself a contribution to pandemic preparedness.}}
 \end{frame}
 
 % ===================================================================
@@ -365,7 +367,7 @@ Even a coherent, empirically motivated model can leave the \emph{ethical} conclu
 \justifying
 \item \textbf{\textit{A constructive counterexample:}} under favourable assumptions, selective vaccination can still minimise deaths.
 \pause
-\item \textbf{\textit{A neglected mechanism:}} the transmission--virulence trade-off (viral ageing) changes the ethical picture.
+\item \textbf{\textit{A neglected mechanism:}} the transmission-virulence trade-off (viral ageing) changes the ethical picture.
 \pause
 \item \textbf{\textit{A stance:}} strong moral conclusions drawn straight from epidemiological models deserve humility under deep uncertainty.
 \end{enumerate}
@@ -388,7 +390,7 @@ Even a coherent, empirically motivated model can leave the \emph{ethical} conclu
 % ===================================================================
 \appendix
 % ===================================================================
-\begin{frame}{Appendix --- Model parameters}
+\begin{frame}{Appendix: Model parameters}
 \small
 \begin{itemize}
   \item $N=500$ agents, $25\times25$ grid, 10\% initially infected, 10\% vulnerable.
@@ -399,7 +401,7 @@ Even a coherent, empirically motivated model can leave the \emph{ethical} conclu
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Appendix --- Death probability update}
+\begin{frame}[fragile]{Appendix: Death probability update}
 \begin{lstlisting}[language=Python]
 if self.vaxxed:
     base_death_prob = self.death_prob * (1 - self.vax_effect)
@@ -417,7 +419,7 @@ if self.rng.random() < base_death_prob:
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}{Appendix --- An example single run (S2)}
+\begin{frame}{Appendix: An example single run (S2)}
 \begin{figure}
   \centering
   \includegraphics[width=0.8\textwidth]{example_plot.png}

@@ -1,0 +1,298 @@
+\makeatletter
+\let\ifGm@compatii\relax
+\makeatother
+\documentclass{beamer}%[handout]
+\mode<presentation> {
+  \usetheme{Warsaw}
+	\usecolortheme{whale}
+}
+
+\beamerdefaultoverlayspecification{<+->} % Inserted by Juergen every click goes to the next item
+%\beamertemplatetransparentcovereddynamic
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+\AtBeginSubsection[]                              
+{
+  \begin{frame}<beamer>
+    \frametitle{Outline}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\DeclareGraphicsExtensions{.jpg,.mps,.pdf,.png,.jpeg}
+\usepackage{graphicx}
+\usepackage{times}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor = blue,citecolor=blue,linkcolor=blue}
+        
+\usepackage{ragged2e}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{eso-pic}
+\usepackage{soul}
+\usepackage{tabularx}
+\usepackage{pbox}
+\usepackage{colortbl}
+
+\setbeamertemplate{navigation symbols}{\setbeamercolor{normal text}{blue}\textbf{\insertframenumber~/~\inserttotalframenumber}}
+\newcommand{\ijg}{\item\justifying}
+\newcommand{\benum}{\begin{enumerate}}
+\newcommand{\eenum}{\end{enumerate}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\setbeamertemplate{bibliography item}{\includegraphics[width=1.5em]{book}}
+%sets/gets rid of the book icon in the bibliography
+
+\usepackage{eso-pic}
+
+\newcommand\BackgroundPic{
+\put(0,0){
+\parbox[b][\paperheight]{\paperwidth}{%
+\vfill
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,
+keepaspectratio]{Vax}%
+\vfill
+}}}
+
+\begin{document}
+\AddToShipoutPicture*{\BackgroundPic}
+\date{}
+
+\title{Vaccinations: how the needs of the few can outweigh the needs of the 
+many}
+\institute{J\"urgen Landes and Ignacio Ojea Quintana\\
+$ $\\
+Bayreuth LMU Workshop\\
+$ $\\
+$ $\\
+LMU Munich}
+
+\titlepage
+\usebackgroundtemplate{...}
+
+{
+  \begin{frame}<beamer>
+    \frametitle{Plan for Today}
+    \tableofcontents
+  \end{frame}
+}
+
+\section{Motivation}
+
+\subsection{Background}
+\begin{frame}
+\frametitle{The Vaccination Debate}
+\begin{itemize}
+\ijg Safe and effective vaccines has saved countless lives (small pox, tetanus, etc.).
+\ijg Covid-19 vaccines have proven to be widely effective and safe.
+\ijg Some philosophers urged mandatory Covid-19 vaccination programs. \cite{Singer2021}
+\ijg Refusal to get vaccinated was deemed ethically blameworthy (unfair free-riding). \cite{Kelsall2024}
+\ijg So, vaxxing the entire population is always good; right?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Role of Models}
+\justifying Transmission models were used to devise vaccination strategies and served as a basis for policymaking in many countries$^{33,41-43}$. The model-based assessment of the vaccination impact incorporates biological characteristics of the virus, age-dependent effects in transmission and disease severity, epidemiological effects of vaccines, and additional factors that are setting-specific (e.g., the level of non-pharmaceutical interventions, vaccine supply, and SARS-CoV-2 seroprevalence prior to vaccination rollout$^{29}$). \cite[P.\ 3]{Rouzine2023} 
+\end{frame}
+
+\subsection{Our Take}
+\begin{frame}
+\frametitle{Virus Mutations}
+ Prior respiratory pandemics showed development in waves and the pandemic phase extended over a 2-3 years course. The waves were characterized by different clinical severity and the pandemic phases seem to end with an attenuation of the viral virulence. [..] Even without efficient vaccines and drugs, the pandemic phase of the Russian and Spanish flu ended after a wave associated with milder symptoms. \cite[P.\ 1314]{Bruessow2022}
+\end{frame}
+
+\begin{frame}
+\frametitle{Transmission-virulence trade-off hypothesis}
+In plain words, if a pathogen causes its host to lay in bed or even to die instead of happily going around and transmitting the infection, it will be outcompeted by mutants that cause less damage to the host and allows it to produce more pathogens and infect other hosts. \cite[P.\ 71]{Kun2023} 
+\end{frame}
+
+\begin{frame}
+\frametitle{Addressing the Knowledge Gap}
+\begin{itemize}
+\ijg Models used to support vaccination strategies did not model mutation of Sars-Cov-2.
+\ijg We develop an ABM that models virus mutations.
+\ijg We compare different vaccination strategies:
+\benum
+\ijg Vax all.
+\ijg Vax only vulnerable.
+\eenum
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Stake}
+\bit
+\ijg While our model is clearly inspired by Covid-19, our aim is to build a generic model that is of relevance for future public health decision making.
+\ijg Our contribution is not a comment on actual (successes of) Covid-19 vaccination strategies.
+\ijg Should we (\emph{central planner}) vaccinate all?
+\eit
+\end{frame}
+
+\section{The ABM}
+\subsection{Concepts}
+
+
+\begin{frame}
+\frametitle{Basics}
+\bit
+\ijg Our ABM is a discrete time SISD model:
+\bit
+\ijg that agents are initially susceptible (S) to infection (I),
+\ijg and an infection can have two mutually exclusive outcomes: either the agent eventually recovers and becomes susceptible again (S) or the agent dies (D).
+\eit
+\eit
+\end{frame}
+
+\begin{frame}
+\frametitle{Basics 2}
+\bit
+\ijg 500 agents are initialised in random locations on a 2-dimensional grid (25 x 25).
+\ijg 10\% are initially infected.
+\ijg Movements are described by a simple symmetric random walk where they are equally likely to go up, down, left or right.
+\ijg Whenever an infected agent and a susceptible agent occupy the same location, then the susceptible agent is infected with some probability.
+\ijg At each time step infected agents either die with some probability or have an increasing probability of recovery.
+\eit
+\end{frame}
+
+\begin{frame}
+\frametitle{Bells and Whistles}
+\bit
+\ijg {\bf Vulnerable} agents (10\%) are more likely to become infected, more likely to die from an infection, and take more time to recover.
+\ijg {\bf Immunity} every time an infected agent recovers, it gains some immunity.
+\ijg {\bf Vaccinated} agents have a significant advantage over non-vaccinated agents in terms of  infection probability, recovery time, and probability of death.
+\ijg {\bf Viral age} of a virus increases by one every time a virus infects (jumps) from an infected agent to a susceptible agent.
+\ijg {\bf Lethality} decreases with viral age (transmission-virulence trade-off), while transmission probability and recovery time remain constant.
+\eit
+\end{frame}
+
+\subsection{Parameter Values}
+
+\begin{frame}
+\frametitle{SISD Parameters}
+\bit
+\item Infection probability: $0.25$. This is the base probability (no immunity, no vaccination, viral age zero, non-vulnerable) of virus transmission of an infected agent and a susceptible agent occupy the same grid location.
+\item Death probability: $0.01$. This is the base probability (no immunity, no vaccination, viral age zero, non-vulnerable) of an infected agent dying per daily time step.
+\item Recovery time: $30$. Agents keep track of how long they have been infected, and as time progresses they have increased probability of recovery, reaching probability 1 at recovery time.
+\eit
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Additional Parameters}
+\bit
+\item Vulnerability penalty: $2$, vulnerable agents have increased base infection probability, death probability and recovery time by $300\%$.
+\item Immunity effect: $0.1$, every time an agent recovers it gets an immunity increase in the form of a $10\%$ reduction in their base infection and death probabilities, and recovery time.
+\item Vaccination effect: $0.7$, vaccinated agents have their base initial infection and death probabilities, as well as recovery time, reduced by $70\%$.
+\item Viral ageing: $0.1$, every time the virus is transferred to an agent, its death probability is reduced by $10\%$ (but infectivity and recovery time are uneffected).
+\eit
+\end{frame}
+
+\begin{frame}
+\frametitle{Termination Conditions}
+\benum
+\item No agent is infected (this also happens when all agents have died) or
+\ijg no agent died within the last 50 time steps of the model.
+\eenum
+\end{frame}
+
+
+\section{Results and Conclusions}
+
+\subsection{Results}
+
+\begin{frame}
+\frametitle{Varying Parameters}
+\begin{enumerate}
+    \item \textit{Viral ageing} in [0.1,0.9].
+    \item \textit{Vaccination effect} in [0.1,0.9].
+    \item \textit{Death probability} in [0.01,0.9].
+\end{enumerate}
+\end{frame}
+
+
+\frame{
+\frametitle{Parameter Settings where it is better not to vaccinate all}
+\begin{figure}
+\centering
+\includegraphics[width=80mm]{One Plot.png}
+\end{figure}
+}
+
+\frame{
+\frametitle{Context for Figure}
+\bit
+\ijg The reason to use trials ($n=200$) is to avoid the possibility that Strategy 2 was outperforming Strategy 1 due to fortuitous chance events, since our model uses a number of random choices (initial distribution of agents in the grid, random walks, transmission probabilities, etc.).
+\ijg We employed the \textit{scikit-optimize} package using Bayesian Optimisation and a Gaussian Process (GP) regression model to minimise our objective function, over a total of $k=1000$ parameter settings.
+\ijg Minimising the objective function we found $224$ triples of parameters (\textit{Viral ageing}, \textit{Vaccination effect} and \textit{Death probability}), for which the objective function was negative: Strategy 2 is preferable to Strategy 1.
+\eit
+}
+
+\subsection{Conclusions}
+
+\frame{
+\frametitle{Difference between Strategies}
+\benum
+\ijg The average difference between the strategies is never large (the maximal difference in proportions of dead agents was 0.7\%).
+\ijg While there are some areas of the parameter space in which none of the tested parameters lie, the tested parameters are spread widely across multiple regions.
+\ijg We also ran simulations which vary more parameters and further points were found, but these are hard to visualise, and there did not seem to be any systematic relation between the parameter variables for where Strategy 2 was better than Strategy 1.
+\eenum
+}
+
+\frame{
+\frametitle{On Predictability}
+\benum
+\ijg It is not easy to predict when vaccinating all is the better strategy.
+\ijg It is hard to be sure that Strategy 2 is worse in a concrete situation.
+\eenum
+}
+
+
+\begin{frame}
+\frametitle{Literature on Covid Models}
+\bit
+\ijg Previous criticisms were often made on principled grounds and/or on concrete case studies.
+\ijg We instead identify a biological mechanism that is (mostly) missing in theories and models, which we integrate into our own model.
+\ijg Since our model seems no less reasonable than previous models and the results from our model conflict with the received wisdom, we argue that we should be very careful when drawing conclusions from pandemic models.
+\eit
+\end{frame}
+
+\begin{frame}
+\frametitle{Ethics}
+\bit
+\ijg Not getting vaccinated (if not vulnerable) can {\bf reduce} total deaths.
+\ijg To achieve the an outcome preferable to the community, a majority has to accept a greater risk to their well-being.
+\ijg ``The needs of the few outweigh the needs of the many.''
+\eit
+\end{frame}
+
+\begin{frame}
+\frametitle{Future Work}
+\bit
+\ijg Compare deaths in vulnerable and non-vulnerable sub-groups.
+\ijg Make the model more complex -- apparently....
+\eit
+\end{frame}
+
+\frame{
+\frametitle{Thank You!}
+\begin{figure}
+\centering
+\includegraphics[width=90mm]{Ignacio.jpg}
+\end{figure}
+}
+
+
+\bibliographystyle{elsarticle-num}
+\bibliography{../BiblioUpdates/test4}
+
+\end{document}

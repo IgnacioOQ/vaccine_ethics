@@ -1,12 +1,12 @@
 # Fdb version 4
-["biber build/main"] 1782245832.81339 "build/main.bcf" "build/main.bbl" "build/main" 1782245875.44858 0
+["biber build/main"] 1782455990.60758 "build/main.bcf" "build/main.bbl" "build/main" 1782456021.57477 0
   "bibliography.bib" 1782245266.94292 31182 6ac7ecdae2e0fec6188ff10119bbb77c ""
-  "build/main.bcf" 1782245875.07684 110986 d4ece1fba24e3369194bdfd9141b08fa "lualatex"
+  "build/main.bcf" 1782456021.14296 110986 d4ece1fba24e3369194bdfd9141b08fa "lualatex"
   (generated)
   "build/main.bbl"
   "build/main.blg"
   (rewritten before read)
-["lualatex"] 1782245862.41017 "main.tex" "main.pdf" "main" 1782245875.44895 0
+["lualatex"] 1782456007.72613 "main.tex" "main.pdf" "main" 1782456021.57519 0
   "/Users/ignacio/Library/texlive/2026/texmf-var/luatex-cache/generic/fonts/otl/lmroman8-regular.luc" 1779359759.68315 128146 5f2c6b1d031c00984c81c7b54ef51d1c ""
   "/Users/ignacio/Library/texlive/2026/texmf-var/luatex-cache/generic/fonts/otl/lmsans8-regular.luc" 1779522519.35789 127596 561db5fb9f77a35c96f26ad4094c736b ""
   "/Users/ignacio/Library/texlive/2026/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz" 1778835843.57319 430757 a07a8af60a4022d01596326874d33f78 ""
@@ -369,13 +369,13 @@
   "/usr/local/texlive/2026/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1778837153 5573038 ad3e0d8c63dbec7957113a2386d66888 ""
   "/usr/local/texlive/2026/texmf-var/tex/generic/config/language.dat" 1774209518 6843 b47da19a8f71adfd0d5f143e53e45276 ""
   "/usr/local/texlive/2026/texmf-var/web2c/luahbtex/lualatex.fmt" 1778837164 5674899 d457bc5a4a4b035861f191c1634ab2af ""
-  "build/main.aux" 1782245875.06683 10693 f1299be86cf4d99981fff16ab5033083 "lualatex"
-  "build/main.bbl" 1782245836.6137 28950 04547eb416ee24b37a601bc8130e7c65 "biber build/main"
-  "build/main.nav" 1782245875.07825 4340 e36175610fd687be5e5165296fbff54c "lualatex"
-  "build/main.out" 1782245875.07451 798 b90aa129563019846e0936496d205825 "lualatex"
-  "build/main.run.xml" 1782245875.0781 2375 5f31e497355f82f3ac65fb25977f17b6 "lualatex"
-  "build/main.toc" 1782245875.07837 320 6724f4c5d71cf75b5631345342d6bc8d "lualatex"
-  "build/main.vrb" 1782245874.59088 452 2e517b0ab8fa6926f620ddfeb771e84f "lualatex"
+  "build/main.aux" 1782456021.13235 10693 6b034d1889ea90366f06204a0aa62d7f "lualatex"
+  "build/main.bbl" 1782455994.51897 28950 04547eb416ee24b37a601bc8130e7c65 "biber build/main"
+  "build/main.nav" 1782456021.14439 4340 ab07e8a06fe802cce70abe5032a514d2 "lualatex"
+  "build/main.out" 1782456021.1409 798 b90aa129563019846e0936496d205825 "lualatex"
+  "build/main.run.xml" 1782456021.14424 2375 5f31e497355f82f3ac65fb25977f17b6 "lualatex"
+  "build/main.toc" 1782456021.14451 320 03ba77256bd4d1b69629dcb2a7106f0c "lualatex"
+  "build/main.vrb" 1782456020.62781 449 261ec7c6e31daaecc432e851bbe50192 "lualatex"
   "figures/ALL_vax_hurts.png" 1782245266.93252 155576 00618385ce334c789d7ebdba2509cf67 ""
   "figures/AUC_vax_hurts.png" 1782245266.93156 152575 8c1dcbbcc0d596a3b52305a3364e6a10 ""
   "figures/Cropped.png" 1782245266.93506 28292 d9e3c188fd8b7971940b86192d595461 ""
@@ -383,7 +383,7 @@
   "figures/vax_hurts.png" 1782245266.93019 186596 9bc10c120724b7ea644c4bd87c901dd4 ""
   "figures/vul_vs_nonvul.png" 1782245266.93349 87705 96f9fc4cb4eac46df5ba7af3665dc78c ""
   "if-beamer.cls" 1782245331.80444 9938 2c63d7035d1ce7c16ea8d9b5863235d2 ""
-  "main.tex" 1782245818.99962 14583 d7026a40d0d0c48fbeded9c555022842 ""
+  "main.tex" 1782455978.93133 14434 7172b0bf8c6bb2674841e1f68e5431da ""
   (generated)
   "build/main.aux"
   "build/main.bcf"
