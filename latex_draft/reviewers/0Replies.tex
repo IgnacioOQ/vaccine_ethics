@@ -45,7 +45,7 @@
   breaklines=true,
   frame=single
 }
-\usepackage{setspace} 
+\usepackage{setspace}
 \doublespacing
 \usepackage{endnotes}
 
@@ -70,6 +70,16 @@
 \newcommand{\ignacio}[1]{\textcolor{red}{#1}}
 \newcommand{\new}[1]{\textcolor{magenta}{#1}}
 
+% --- reply-letter macros ---------------------------------------------------
+% \reply{}  our text to the reviewer, set in blue
+% \open{}   a placeholder for an item still being drafted; deliberately loud,
+%           so that no unfinished reply can be shipped by accident.
+% \rlabel{}  a block label (Comment. / Response. / Changes.) set on its own
+%           line, so that the text beneath it always starts a fresh paragraph.
+\newcommand{\reply}[1]{\textcolor{blue}{#1}}
+\newcommand{\open}[1]{\textcolor{red}{\textbf{[OPEN -- TO BE COMPLETED]}\ #1}}
+\newcommand{\rlabel}[1]{\par\medskip\noindent\textbf{#1}\par\nobreak}
+% ---------------------------------------------------------------------------
 
 \usepackage{lmodern}
 \usepackage{graphicx}
@@ -94,39 +104,294 @@
 
 \allowdisplaybreaks
 \begin{document}
-We are sincerely grateful to the reviewers for the time and attention they have devoted to our manuscript. We went carefully through their suggestions and realised that there were many major improvements we could make. We explain below how. Our replies are in {\color{blue}blue}.
 
-\subsection*{Reviewer 1}
+\begin{center}
+{\Large\bf Response to the Reviewers}\\[0.6em]
+{\large Vaccination Policy under Model Uncertainty:\\ Can the Needs of the Few Outweigh the Needs of the Many?}
+\end{center}
+
+\bigskip
+
+\noindent We are sincerely grateful to both reviewers for the care and the
+generosity of their reports. Reading them, we realised that several of the
+points raised were not small matters of presentation but places where the
+manuscript was either imprecise or simply wrong, and we have been glad of the
+chance to put them right. We are particularly grateful for the references we
+were pointed to, and for a set of historical counter-examples that sharpened
+our thinking about the central assumption of the paper.
+
+\medskip
+
+\noindent Below we take each comment in turn. For every comment we give the
+reviewer's words in full, then our reply, then the specific changes made to
+the manuscript. Our text is set in {\color{blue}blue}. All section numbers
+refer to the revised manuscript, and all changes are marked in colour there,
+so that each item can be located directly.
+
+\medskip
+
+\noindent \open{Two items are still being drafted and are flagged in red
+below: Reviewer 1's Comment 5 and Reviewer 2's Comment 1. This notice and both
+placeholders must be resolved before the letter is submitted.}
+
+\bigskip
+
+\section*{Summary of the changes}
+
+\noindent\begin{tabularx}{\textwidth}{|l|X|l|}
+\hline
+{\bf Comment} & {\bf Point raised} & {\bf Revised ms.}\\\hline
+R1 $\cdot$ C1 & Engage the selective-lockdown ethics literature & \S2.4\\\hline
+R1 $\cdot$ C2 & Engage the modelling-humility and uncertainty-communication literature & \S5\\\hline
+R1 $\cdot$ C3 & Ground the confidence claim in the Simplifications section & \S2.5\\\hline
+R1 $\cdot$ C4 & Clarify what is negative about ``negative herd immunity'' & \S3.3\\\hline
+R1 $\cdot$ C5 & Specify which notion of herd immunity is in use & \open{}\\\hline
+R1 $\cdot$ C6 & Introduce the block quotations properly & \S1, \S2.1\\\hline
+R2 $\cdot$ C1 & The virulence-decline premise & \S2.1, \S3.2\\\hline
+R2 $\cdot$ C2 & The claim about tetanus in the introduction & \S1\\\hline
+\end{tabularx}
+
+\bigskip
+
+\section*{Reviewer 1}
+
+\subsection*{Overall comment}
+
+\rlabel{Comment.}
 This is a very good paper which proposes an alternative model for infectious disease spread under conditions of uncertainty. The proposed model yields conclusions and supports recommendations substantially different from those normally derived from models, especially those used during the pandemic. By proposing a plausible model (that is, one based on plausible, albeit questionable, assumptions about disease spread, human behaviour, virulence changes etc) and suggesting that selective, rather than population-wide, vaccination could result in fewer deaths given certain assumptions, the paper emphasises the uncertainty and speculative nature of many epidemiological models used for policy recommendation, thus making a case for (what I take to be) much needed epistemic humility in model-based epidemiology and subsequent policy recommendations.
 
 The paper is clearly written and well structured and I think it would make a nice contribution to the literature on pandemic/epidemic preparedness and on model-based policy making.
 
 For these reasons, I recommend that it is published, though I have some suggestions for improvements and I should point out that my expertise is in ethics/philosophy only. I cannot therefore assess the technical aspects of the proposed model.
 
-About the ethics of selective vaccination, the authors rightly say that additional normative premises are needed to draw ethical implications and policy recommendation from a model predicting fewer deaths with selective vaccination. The literature on selective lockdowns, which were defended ethically on the basis of similar considerations (creating immunity among the non-vulnerable by letting them free to live their normal lives while temporarily shielding the elderly and vulnerable) might offer some insights that the authors might want to engage with or at least refer to. See e.g. Savulescu J, Cameron JWhy lockdown of the elderly is not ageist and why levelling down equality is wrong Journal of Medical Ethics 2020;46:717-721. {\color{blue}We now refer to this literature.}
+\rlabel{Response.}
+\reply{We thank the reviewer warmly for this generous assessment and for the
+recommendation to publish. We are pleased that the argumentative role of the
+model came across as intended: the paper is not a prediction about any
+particular pandemic, but a constructive counter-example meant to show how much
+weight contestable modelling assumptions can carry. We have adopted all six
+suggestions below. Four of them (C1, C2, C3 and C6) are straightforward
+additions or clarifications; C4 led us to rewrite the passage the reviewer
+found unclear; C5 raises a question about the notion of herd immunity that we
+address separately.}
 
-About the uncertainty around models, their susceptibility to contested assumption, and the importance of epistemic humility that these factors, many of the recommendations put forward by the authors in the conclusion align with the recommendations in Saltelli A, et al 2020. Five ways to ensure that models serve society: a manifesto. Nature. Jun;582(7813):482-484. The authors might want to engage with or refer to those. And about the importance of communicating uncertainty around public health policy, the authors might want to see Giubilini, A et al 2025, “Expertise, Disagreement, and Trust in Vaccine Science and Policy. The Importance of Transparency in a World of Experts”.. Diametros 22 (82): 7-27. {\color{blue}We now cite these papers.\\
-Concerning this and the previous comment. Many thanks for pointing out these important papers to us. We feel that any serious engagement with them -- as deserved as it might be -- would derail the flow of this manuscript. We have hence opted for mere citation rather than proper engagement.}
+\subsection*{Comment 1: Engage the selective-lockdown ethics literature}
 
-The section on Simplifications of the model might benefit from further clarifications. In particular, the authors write at the end of that section that "Despite all these simplifications, we are confident that the main qualitative conclusions our model licences can also be drawn from modified models and/or evaluation metrics". Where does that confidence come from? Why would the reader trust your confidence? Surely, appeal to your own sense of confidence by itself does not provide sufficient support. {\color{blue} Our own confidence does indeed not provide much support. However, without running the actual simulations (plural!), how could we convince a sceptical reader that different simulations license similar conclusions? We felt that stating our confidence without making claims about the actual results of these other simulations would invite readers to draw their own inferences and conclusions.\\
-We now give some reasons for our confidence and explicitly state that the support provided by these reasons is rather limited.}
+\rlabel{Comment.}
+About the ethics of selective vaccination, the authors rightly say that additional normative premises are needed to draw ethical implications and policy recommendation from a model predicting fewer deaths with selective vaccination. The literature on selective lockdowns, which were defended ethically on the basis of similar considerations (creating immunity among the non-vulnerable by letting them free to live their normal lives while temporarily shielding the elderly and vulnerable) might offer some insights that the authors might want to engage with or at least refer to. See e.g. Savulescu J, Cameron J. Why lockdown of the elderly is not ageist and why levelling down equality is wrong. Journal of Medical Ethics 2020;46:717-721.
 
-The notion of 'negative herd immunity" the authors introduce at p. 14 might need to be better explained. The authors write "This situation can be understood as a sort of negative herd immunity effect, where herd immunity may have negative consequences for those who remain susceptible". It's not very clear why the implications are negative. I suppose herd immunity is good in any case for those susceptible as, by definition, it means a significantly reduced risk of infection (compared to a situation of non-herd immunity). It is not clear to me that 'herd immunity' itself is what is negative, as opposed to the way in which it is achieved. If I understand well, on this model, vaccine-induced herd immunity would be less good than collective immunity obtained by allowing natural infection among the non-vulnerable, as the latter is more likely than the former to reduce virulence. But that simply means that the latter is preferable to the former (though neither is negative) and that what is more or less preferable is the way in which herd immunity is achieved, rather than the outcome itself. Moreover, 'herd immunity' can mean different things (from a dynamic equilibrium that allows for periodical waves of the virus, as per Sunetra Gupta's understanding, to simply very low risk that a susceptible and an infectious person come into contact). It would be good to clarify which understanding of herd immunity is used here, as that seems relevant to an epidemilogical assessment of the model. {\color{blue} We clarified our understanding of herd immunity.}
+\rlabel{Response.}
+\reply{We are grateful for this pointer. The parallel the reviewer draws is
+close: shielding the vulnerable while allowing immunity to build among the
+non-vulnerable is structurally very near to our Strategy 2, and the normative
+premises that were used to defend selective lockdowns are of the kind our
+paper says are needed here. We have added a reference to that literature at
+the point where the manuscript states that such further premises are required.
+We say more about the extent of our engagement in our reply to Comment 2.}
 
-Small comment: There are citations that are added to the text without context or being introduced properly. For instance it is unclear where the citation at pp.5-6 comes from and how it relates to the discussion there, and same for citation at p. 8. Citations should be properly introduced in a way that makes them fit with the flow of the text. {\color{blue} We fully agree. These text passages are quotes which we use to support our reasoning. We now make this clearer.}
- 
-\subsection*{Reviewer 2}
- 
-Thank you for asking me to review this paper. The more general points in the paper about the limits of modelling and of assumptions that everyone must be vaccinated are important points. However, the main thrust of the paper depends on a doubtful empirical claim, that pandemic viruses decline in virulence. While many people might believe this claim, and while there might be evidence for effects of this kind, such effects are clearly dwarfed by the effects (acting in the same direction on average disease severity) of acquired immunity, whether via vaccination or (as was more common in historic pandemics) previous infection.
+\rlabel{Changes.}
+\reply{In \S2.4 (\emph{Limits of Ethical Inference from the Model}), the closing
+sentence of the third paragraph now ends: ``\dots\ require additional normative
+premises that lie outside its scope, such claims are, for instance, discussed
+in the literature on selective lockdowns'', with references to Savulescu and
+Cameron (2020), Cameron et al.\ (2021) and Giubilini et al.\ (2021).}
 
-Consider these counter-examples: (1) Hong Kong \& omicron - a very high death rate was observed due to a lack of immunity due to low prior infection rates and low vaccination among older adults; in other words, low population immunity was a much bigger factor than any decline in the intrinsic virulence of omicron. (2) remote communities of the pacific or the arctic where epidemics of 1918 flu were typically late but nonetheless severe. More generally (3) the high mortality from smallpox and measles when introduced to immuno-naive populations via colonisation, suggesting again that a lack of prior immunity was a much bigger factor than decline in virulence from centuries of endemic transmission in Europe. 
+\subsection*{Comment 2: Engage the modelling-humility and uncertainty-communication literature}
 
-{\color{blue}This is a valuable objection based on historic cases. We would like to reply in three ways. Firstly, our model also includes acquired immunity from previous infections. Secondly, we found parameter settings with a small viral age effect, in which Strategy 2 outperformed Strategy 1. This suggests that even if virulence decline is dwarfed by acquired immunity, our main point still goes through. Thirdly, while Covid-19 is the motivation for our models, we are interested in building a model that is plausibly applicable to future health emergencies. As such, calibrating the effect of viral ageing (to acquired immunity) to Covid-19 is not our focus; we hence de-emphasised Covid-19 in the conclusions. We are instead interested in how different degrees of virulence decline might effect future health decision-making. We continue to believe that a decline in virulence of pathogens is a  phenomenon to be studied. The degree of decline must of course be calibrated to the situation at hand (and may require frequent updates) and be put into proper relation with other parameters.\\
-We now include references about these historical cases and also provide evidence that immunity to Covid-19 decreased over time. This seems to possibly suggest that for Covid-19, the viral ageing effect was not completely swamped by immunity effects. Furthermore, we point to parameter settings in which Strategy 2 outperformed Strategy 1 with a small viral ageing effect.\\
-....}
+\rlabel{Comment.}
+About the uncertainty around models, their susceptibility to contested assumption, and the importance of epistemic humility that these factors, many of the recommendations put forward by the authors in the conclusion align with the recommendations in Saltelli A, et al 2020. Five ways to ensure that models serve society: a manifesto. Nature. Jun;582(7813):482-484. The authors might want to engage with or refer to those. And about the importance of communicating uncertainty around public health policy, the authors might want to see Giubilini, A et al 2025, ``Expertise, Disagreement, and Trust in Vaccine Science and Policy. The Importance of Transparency in a World of Experts''. Diametros 22 (82): 7-27.
+
+\rlabel{Response.}
+\reply{Many thanks for drawing our attention to these papers, which are indeed
+close to our conclusions. Both are now cited. We should be candid about how far
+we have taken this and the previous suggestion. A proper engagement with either
+body of work would deserve several pages, and we judged that it would pull the
+manuscript away from its own line of argument. We have therefore opted for
+citation rather than discussion, and we would of course be glad to expand if
+the reviewer thinks the paper would be better for it.}
+
+\rlabel{Changes.}
+\reply{In \S5 (\emph{Conclusions}), Saltelli et al.\ (2020) is now cited at the
+end of the paragraph on uncertainty about what a proper epidemiological model
+should look like. Giubilini et al.\ (2025) has been added to the references
+supporting the recommendation of good uncertainty communication in the
+penultimate paragraph.}
+
+\subsection*{Comment 3: Ground the confidence claim in the Simplifications section}
+
+\rlabel{Comment.}
+The section on Simplifications of the model might benefit from further clarifications. In particular, the authors write at the end of that section that ``Despite all these simplifications, we are confident that the main qualitative conclusions our model licences can also be drawn from modified models and/or evaluation metrics''. Where does that confidence come from? Why would the reader trust your confidence? Surely, appeal to your own sense of confidence by itself does not provide sufficient support.
+
+\rlabel{Response.}
+\reply{This is a fair hit, and we accept it. An appeal to our own confidence
+does not, on its own, provide support, and the sentence as written asked the
+reader to take our word for something we had not argued. We have added the
+reasons behind the claim and, equally importantly, we now say plainly how
+limited the support those reasons provide is. The honest position is this: we
+did not run the further simulations, so we cannot report them. What we can
+offer is the heuristic that small changes to a system rarely revolutionise its
+behaviour, and the observation that more complex simulations tend to be less
+predictable rather than more, which if anything makes the choice between
+vaccination strategies harder rather than easier. We prefer to state that and
+leave readers to draw their own conclusions.}
+
+\rlabel{Changes.}
+\reply{In \S2.5 (\emph{Simplifications}), the closing paragraph has been
+extended. After the sentence the reviewer quotes, it now continues: ``Since we
+did not carry out further simulations, we cannot report them and have to rely
+on heuristics for predicting their results. Our confidence is partly supported
+by robustness heuristics that small changes to a system rarely revolutionise
+system behaviour. Furthermore, more complex simulations normally lead to less
+predictable outcomes. Hence, complicating our model is, in our minds, likely to
+make it even harder to predict which vaccination strategy is preferable.
+Ultimately, we invite readers to draw their own inferences and conclusions;
+these may be supported by further modelling efforts.''}
+
+\subsection*{Comment 4: Clarify what is negative about ``negative herd immunity''}
+
+\rlabel{Comment.}
+The notion of `negative herd immunity' the authors introduce at p.\ 14 might need to be better explained. The authors write ``This situation can be understood as a sort of negative herd immunity effect, where herd immunity may have negative consequences for those who remain susceptible''. It's not very clear why the implications are negative. I suppose herd immunity is good in any case for those susceptible as, by definition, it means a significantly reduced risk of infection (compared to a situation of non-herd immunity). It is not clear to me that `herd immunity' itself is what is negative, as opposed to the way in which it is achieved. If I understand well, on this model, vaccine-induced herd immunity would be less good than collective immunity obtained by allowing natural infection among the non-vulnerable, as the latter is more likely than the former to reduce virulence. But that simply means that the latter is preferable to the former (though neither is negative) and that what is more or less preferable is the way in which herd immunity is achieved, rather than the outcome itself.
+
+\rlabel{Response.}
+\reply{We thank the reviewer for pressing on this, and we accept the
+reconstruction offered. It is not herd immunity that is bad in our model. What
+matters is the route by which collective immunity is reached, and what the
+model tracks is a change of sign over time rather than a bad outcome. Reducing
+transmission early does protect the population, but in our model it also keeps
+the virus circulating in a smaller and better-protected pool, so that it ages
+more slowly. Over the full run of an epidemic, the early benefit can be
+outweighed, and more agents die. The wording we had borrowed from Luyten et
+al.\ (2011) obscured this, since their negative herd immunity effect names a
+different mechanism, the shifting of severe illness to a later age. We have
+rewritten the passage so that the temporal structure of the effect is explicit
+and so that our use of the term is clearly distinguished from theirs.}
+
+\rlabel{Changes.}
+\reply{In \S3.3 (\emph{Interpretation}), the clause the reviewer quotes,
+``where herd immunity may have negative consequences for those who remain
+susceptible'', has been deleted. The sentence now reads: ``This situation can be
+understood as a sort of negative herd immunity effect, an initial reduction of
+the transmission rate grants an initial positive immunity effect to the
+population (herd immunity) that, as time progresses, turns into a negative
+overall effect causing more agents to die.'' The contrast with the age-related
+mechanism of Luyten et al.\ is retained at the end of the same paragraph.}
+
+\subsection*{Comment 5: Specify which notion of herd immunity is in use}
+
+\rlabel{Comment.}
+Moreover, `herd immunity' can mean different things (from a dynamic equilibrium that allows for periodical waves of the virus, as per Sunetra Gupta's understanding, to simply very low risk that a susceptible and an infectious person come into contact). It would be good to clarify which understanding of herd immunity is used here, as that seems relevant to an epidemilogical assessment of the model.
+
+\rlabel{Response.}
+\open{This reply is still being drafted. The substantive question is which of
+the two notions the reviewer distinguishes our SISD model actually realises.
+Since the model has no permanent removed compartment, recovered agents return
+to the susceptible pool carrying accumulated immunity, so the operative notion
+appears to be closer to a dynamic equilibrium than to a threshold that is
+crossed once. This has to be settled and stated in the manuscript before the
+reply can claim it.}
+
+\rlabel{Changes.}
+\open{None yet.}
+
+\subsection*{Comment 6: Introduce the block quotations properly}
+
+\rlabel{Comment.}
+Small comment: There are citations that are added to the text without context or being introduced properly. For instance it is unclear where the citation at pp.5-6 comes from and how it relates to the discussion there, and same for citation at p.\ 8. Citations should be properly introduced in a way that makes them fit with the flow of the text.
+
+\rlabel{Response.}
+\reply{We fully agree, and we are grateful for the observation. The passages in
+question are block quotations that we use to support our own reasoning, but we
+had dropped them into the text without saying whose words they are or why they
+appear at that point. Each is now introduced by name.}
+
+\rlabel{Changes.}
+\reply{In \S1 (\emph{Introduction}), the quotation from Br\"ussow is now
+preceded by ``Br\"ussow wrote during the pandemic:''. In \S2.1 (\emph{Main
+Components of the Model}), under the heading on viral age, the quotation from
+Kun et al.\ is now preceded by ``In the words of Kun et al.:''.}
+
+\bigskip
+
+\section*{Reviewer 2}
+
+\subsection*{Overall comment}
+
+\rlabel{Comment.}
+Thank you for asking me to review this paper. The more general points in the paper about the limits of modelling and of assumptions that everyone must be vaccinated are important points.
+
+\rlabel{Response.}
+\reply{We thank the reviewer for the time given to the manuscript, and for
+granting the general points about the limits of modelling. The central
+objection that follows is, in our view, the most serious challenge the paper
+has received, and we take it up in detail below.}
+
+\subsection*{Comment 1: The virulence-decline premise}
+
+\rlabel{Comment.}
+However, the main thrust of the paper depends on a doubtful empirical claim, that pandemic viruses decline in virulence. While many people might believe this claim, and while there might be evidence for effects of this kind, such effects are clearly dwarfed by the effects (acting in the same direction on average disease severity) of acquired immunity, whether via vaccination or (as was more common in historic pandemics) previous infection.
+
+Consider these counter-examples: (1) Hong Kong \& omicron - a very high death rate was observed due to a lack of immunity due to low prior infection rates and low vaccination among older adults; in other words, low population immunity was a much bigger factor than any decline in the intrinsic virulence of omicron. (2) remote communities of the pacific or the arctic where epidemics of 1918 flu were typically late but nonetheless severe. More generally (3) the high mortality from smallpox and measles when introduced to immuno-naive populations via colonisation, suggesting again that a lack of prior immunity was a much bigger factor than decline in virulence from centuries of endemic transmission in Europe.
 
 These difficulties with the core assumption make it difficult to evaluate any ethical implications that follow.
 
-The introduction also contains the incorrect claim that tetanus has been virtually eradicated via herd immunity - this is not true, at least not insofar as "herd immunity" means something like reduced population transmission arising from the presence of transmission-reducing immunity in large numbers of individuals, because tetanus is not transmitted between people. {\color{blue}That claim has been corrected.}
+\rlabel{Response.}
+\open{This reply is still being drafted. The material available for it
+includes: that our model represents acquired immunity as a separate channel
+from viral ageing, so the two effects are not conflated; that the
+argumentative role of the paper is modal rather than predictive, so the premise
+needs to be possible and not unreasonable rather than typical; that we found
+parameter settings with a small viral ageing effect in which Strategy 2 still
+outperforms Strategy 1; and an honest concession that the size of the
+virulence-decline effect in real pandemics is contested. Whether the reply also
+reports a new robustness check remains to be decided.}
+
+\rlabel{Changes.}
+\reply{Two changes prompted by this comment have already been made to the
+manuscript. In \S2.1 (\emph{Main Components of the Model}), a new paragraph
+follows the description of viral age. It cites all three of the reviewer's
+counter-examples, namely the Omicron BA.2 variant in Hong Kong, the isolated
+Pacific islands after the 1918--1919 influenza pandemic, and immuno-naive
+populations encountering pathogens from European colonisers, and it grants that
+``virulence decline can be small and dwarfed by acquired immunity or even
+non-existent''. It then sets against this the evidence that immunity to
+Covid-19 waned over time and fell sharply after Omicron. In \S3.2, a sentence
+now directs the reader to those parameter settings with a small viral age
+effect that correspond to the cases the reviewer raises.}
+
+\subsection*{Comment 2: The claim about tetanus in the introduction}
+
+\rlabel{Comment.}
+The introduction also contains the incorrect claim that tetanus has been virtually eradicated via herd immunity - this is not true, at least not insofar as ``herd immunity'' means something like reduced population transmission arising from the presence of transmission-reducing immunity in large numbers of individuals, because tetanus is not transmitted between people.
+
+\rlabel{Response.}
+\reply{The reviewer is right, and we are grateful for the correction. Tetanus
+is contracted from environmental spores and is not transmitted between people,
+so it cannot be controlled by herd immunity and should not have been offered as
+an example of it. The opening sentence has been corrected.}
+
+\rlabel{Changes.}
+\reply{In \S1 (\emph{Introduction}), the opening sentence previously read
+``\dots\ such as the eradication of smallpox and the virtual eradication of
+tetanus and polio by achieving herd immunity''. It now reads ``\dots\ such as
+the eradication of smallpox and the virtual eradication of tetanus (among
+vaccinated patients) and polio''. The appeal to herd immunity has been dropped
+from the sentence.}
+
+\bigskip
+
+\section*{Further changes}
+
+\noindent\reply{Beyond the points raised by the reviewers, we have made two
+editorial passes over the manuscript. Em dashes have been replaced by
+parentheses throughout, and multiple citations within a single bracket have
+been ordered alphabetically. In \S3.5 (\emph{Worst Cases}) we have also added a
+short remark that decision makers are likely to be reluctant to bear the costs
+should selective vaccination backfire, which makes worst-case outcomes of
+practical as well as theoretical interest.}
+
+\bigskip
+
+\noindent\reply{We thank both reviewers again for their attention to the
+manuscript, which we believe is considerably stronger for it.}
 
 \end{document}
