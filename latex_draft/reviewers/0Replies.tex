@@ -71,12 +71,17 @@
 \newcommand{\new}[1]{\textcolor{magenta}{#1}}
 
 % --- reply-letter macros ---------------------------------------------------
-% \reply{}  our text to the reviewer, set in blue
+% \reply{}  our text to the reviewer. Renders plain: this letter is what the
+%           reviewers receive, so it carries none of the colour conventions we
+%           use in the working documents. Kept as a macro so the authorial
+%           voice stays marked up in the source (and can be tinted again for
+%           an internal read-through by editing this one line).
 % \open{}   a placeholder for an item still being drafted; deliberately loud,
-%           so that no unfinished reply can be shipped by accident.
+%           so that no unfinished reply can be shipped by accident. Must be
+%           gone before submission.
 % \rlabel{}  a block label (Comment. / Response. / Changes.) set on its own
 %           line, so that the text beneath it always starts a fresh paragraph.
-\newcommand{\reply}[1]{\textcolor{blue}{#1}}
+\newcommand{\reply}[1]{#1}
 \newcommand{\open}[1]{\textcolor{red}{\textbf{[OPEN -- TO BE COMPLETED]}\ #1}}
 \newcommand{\rlabel}[1]{\par\medskip\noindent\textbf{#1}\par\nobreak}
 % ---------------------------------------------------------------------------
@@ -124,15 +129,8 @@ our thinking about the central assumption of the paper.
 
 \noindent Below we take each comment in turn. For every comment we give the
 reviewer's words in full, then our reply, then the specific changes made to
-the manuscript. Our text is set in {\color{blue}blue}. All section numbers
-refer to the revised manuscript, and all changes are marked in colour there,
-so that each item can be located directly.
-
-\medskip
-
-\noindent \open{Two items are still being drafted and are flagged in red
-below: Reviewer 1's Comment 5 and Reviewer 2's Comment 1. This notice and both
-placeholders must be resolved before the letter is submitted.}
+the manuscript. All section numbers refer to the revised manuscript, so that
+each item can be located directly.
 
 \bigskip
 
@@ -145,7 +143,7 @@ R1 $\cdot$ C1 & Engage the selective-lockdown ethics literature & \S2.4\\\hline
 R1 $\cdot$ C2 & Engage the modelling-humility and uncertainty-communication literature & \S5\\\hline
 R1 $\cdot$ C3 & Ground the confidence claim in the Simplifications section & \S2.5\\\hline
 R1 $\cdot$ C4 & Clarify what is negative about ``negative herd immunity'' & \S3.3\\\hline
-R1 $\cdot$ C5 & Specify which notion of herd immunity is in use & \open{}\\\hline
+R1 $\cdot$ C5 & Specify which notion of herd immunity is in use & \S3.3\\\hline
 R1 $\cdot$ C6 & Introduce the block quotations properly & \S1, \S2.1\\\hline
 R2 $\cdot$ C1 & The virulence-decline premise & \S2.1, \S3.2\\\hline
 R2 $\cdot$ C2 & The claim about tetanus in the introduction & \S1\\\hline
@@ -274,7 +272,7 @@ understood as a sort of negative herd immunity effect, an initial reduction of
 the transmission rate grants an initial positive immunity effect to the
 population (herd immunity) that, as time progresses, turns into a negative
 overall effect causing more agents to die.'' The contrast with the age-related
-mechanism of Luyten et al.\ is retained at the end of the same paragraph.}
+mechanism of Luyten et al.\ is retained at the end of the same paragraph.} \ignacio{To be honest I would not use the expression 'negative heard immunity', I think its more confusing than clarifying.}
 
 \subsection*{Comment 5: Specify which notion of herd immunity is in use}
 
@@ -282,16 +280,43 @@ mechanism of Luyten et al.\ is retained at the end of the same paragraph.}
 Moreover, `herd immunity' can mean different things (from a dynamic equilibrium that allows for periodical waves of the virus, as per Sunetra Gupta's understanding, to simply very low risk that a susceptible and an infectious person come into contact). It would be good to clarify which understanding of herd immunity is used here, as that seems relevant to an epidemilogical assessment of the model.
 
 \rlabel{Response.}
-\open{This reply is still being drafted. The substantive question is which of
-the two notions the reviewer distinguishes our SISD model actually realises.
-Since the model has no permanent removed compartment, recovered agents return
-to the susceptible pool carrying accumulated immunity, so the operative notion
-appears to be closer to a dynamic equilibrium than to a threshold that is
-crossed once. This has to be settled and stated in the manuscript before the
-reply can claim it.}
+\reply{We are grateful for this question, which turned out to be more than a
+matter of terminology. The reviewer is right that the choice bears on an
+epidemiological assessment of the model, and the manuscript had not made it.
+
+The answer is settled by the structure of the model rather than chosen by us.
+Our SISD model has no removed compartment. Agents who recover return to the
+susceptible pool carrying partial immunity, which lowers their probability of
+reinfection and of death without ever eliminating either. Since the
+susceptible pool is continuously replenished and immunity is never sterilising,
+there is no threshold whose crossing would bring transmission to an end. What
+the population reaches is the first of the two notions the reviewer
+distinguishes: a dynamic equilibrium at which the pathogen remains endemic.
+The manuscript in fact already displayed this without saying so, in the example
+run of the appendix, where the epidemic settles into an endemic but relatively
+harmless state. We have now stated it where the reviewer looked for it.
+
+One divergence from the models usually associated with that notion is worth
+recording. There, recurrent waves are sustained by antigenic escape, as new
+variants restore virulence and evade existing immunity. In our model the
+pathogen instead attenuates with every transmission, so the equilibrium it
+approaches is not merely endemic but progressively benign. We have made this
+explicit as well, so that our appeal to a dynamic equilibrium is not read as a
+claim about antigenic drift.}
 
 \rlabel{Changes.}
-\open{None yet.}
+\reply{In \S3.3 (\emph{Interpretation}), a new paragraph now precedes the
+discussion of the negative herd immunity effect: ``Herd immunity is used in
+more than one sense, and our model settles which one applies. There is no
+removed compartment: agents who recover return to the susceptible pool carrying
+partial immunity, which lowers their risk of reinfection without ever
+eliminating it. No threshold is crossed after which transmission ceases. The
+population instead reaches a dynamic equilibrium in which the pathogen remains
+endemic at a low level, as the example run in Figure~6 illustrates. It is herd
+immunity in this sense that we appeal to here. Unlike models in which new
+variants restore virulence, the pathogen in our model attenuates with each
+transmission, so the equilibrium it approaches is not merely endemic but
+progressively benign.''}
 
 \subsection*{Comment 6: Introduce the block quotations properly}
 
@@ -335,15 +360,43 @@ Consider these counter-examples: (1) Hong Kong \& omicron - a very high death ra
 These difficulties with the core assumption make it difficult to evaluate any ethical implications that follow.
 
 \rlabel{Response.}
-\open{This reply is still being drafted. The material available for it
-includes: that our model represents acquired immunity as a separate channel
-from viral ageing, so the two effects are not conflated; that the
-argumentative role of the paper is modal rather than predictive, so the premise
-needs to be possible and not unreasonable rather than typical; that we found
-parameter settings with a small viral ageing effect in which Strategy 2 still
-outperforms Strategy 1; and an honest concession that the size of the
-virulence-decline effect in real pandemics is contested. Whether the reply also
-reports a new robustness check remains to be decided.}
+\reply{We are grateful for this objection. It is the most serious challenge the
+manuscript received, and the three counter-examples are well chosen.
+
+We should say first what we are not disputing. We do not claim that virulence
+decline was the dominant factor in the cases the reviewer names, and we accept
+that in each of them low population immunity was the larger effect. We also
+accept that the magnitude of intrinsic virulence decline in real pandemics is
+contested. The manuscript now says so.
+
+What our argument requires is weaker than what the objection denies. The claim
+we examine is that mass vaccination would surely improve public health. That is
+a claim of necessity, and a single coherent counter-example is enough to defeat
+it. Our model is offered as a proof of concept in exactly that sense. It does
+not predict what any pandemic will do. It exhibits a mechanism, places it in a
+model no less reasonable than others in use, and shows that the ethical verdict
+can reverse. For this the transmission--virulence trade-off need not be
+typical, or even common. It needs to be real and of uncertain magnitude. The
+reviewer's own formulation grants the first, allowing that there might be
+evidence for effects of this kind, and disputes the second. A dispute about
+magnitude is precisely the kind of uncertainty this paper is about.
+
+This is why the objection, granted in full, does not weaken our conclusion.
+Suppose virulence decline really is dwarfed by acquired immunity in most
+pandemics. Then the models that guided policy encoded one particular weighting
+of two mechanisms whose relative size was contested at the time and remains
+contested now. A different weighting yields a different verdict about
+free-riding and about who ought to be vaccinated. We do not claim that our
+weighting is the right one. We claim that the verdict is sensitive to it, and
+that this sensitivity is a reason for humility about the moral conclusions
+drawn from such models. The objection supplies further evidence that the
+weighting is uncertain, which is our thesis rather than an objection to it.
+
+Two smaller points. Our model represents acquired immunity alongside viral
+ageing, so we do not attribute to one mechanism what the other does. And our
+aim is a model that may be useful in future health emergencies rather than a
+retrodiction of past ones. Whether the trade-off dominated in 1918 or in 2022
+is a different question from whether it could matter next time.}
 
 \rlabel{Changes.}
 \reply{Two changes prompted by this comment have already been made to the
